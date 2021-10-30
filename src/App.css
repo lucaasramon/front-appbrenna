@@ -1,38 +1,163 @@
-.App {
-  text-align: center;
+.corFundoTela{
+    background: green;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.page-footer{
+    background: #737A4C !important;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+[data-header_align="left"] nav.navigation .brand-logo {
+	position: absolute;
+	left: -3px;
+	transform: translateX(0%);
+	-webkit-transform: translateX(0%);
+}
+[data-header_align="left"] nav.navigation .navicon[data-target="slide-nav"] {
+	float: right;
+	margin-right: -8px;
+}
+[data-header_align="left"] nav.navigation .navicon.back-button {
+	position: absolute;
+	right: 95px;
+}
+[data-header_align="left"] nav .navicon.sidenav-trigger {
+	margin-right: 18px;
+}
+[data-header_align="left"] nav.navigation .brand-logo {
+	position: absolute;
+	left: -3px;
+	transform: translateX(0%);
+	-webkit-transform: translateX(0%);
+}
+[data-header_align="left"] nav.navigation .navicon[data-target="slide-nav"] {
+	float: right;
+	margin-right: -8px;
+}
+[data-header_align="left"] nav.navigation .navicon.back-button {
+	position: absolute;
+	right: 95px;
+}
+[data-header_align="left"] nav .navicon.sidenav-trigger {
+	margin-right: 18px;
+}
+table.colored.primary thead th{
+    background: #373a3c !important;
+    color: #ffffff;
   }
+  nav.navigation {
+    background-color: #737A4C !important;
+    position: relative;
+    top: 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+nav a.sidenav-trigger i, nav .navicon i {
+    color: #ffffff;
+}
+.cardFiltro{
+    background: #ffffff;
+    padding: 19px;
+    
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.subpages.collection{
+    margin-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.sec-tit:before, .sec-tit:after{
+    background: gray;
+}
+.btn-novo{
+    margin-top: 15px
+}
+.brown.lighten-2 {
+    background-color: #737a4c !important;
+}
+.divResponsive{
+    overflow-x: scroll !important;
+}
+.modal{
+    display: none;
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    left: 200px;
+    top: 40px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600);
+@import url("/src/css/variables.css");
+@import url("/src/css/_general.css");
+@import url("/src/css/_preloader.css");
+@import url("/src/css/_ui.css");
+@import url("/src/css/_datepicker.css");
+@import url("/src/css/_timepicker.css");
+@import url("/src/css/_carousel.css");
+@import url("/src/css/_carousel-home-screen.css");
+@import url("/src/css/_slider.css");
+@import url("/src/css/_testimonials.css");
+@import url("/src/css/_floating-action.css");
+@import url("/src/css/_tooltips.css");
+@import url("/src/css/_buttons.css");
+@import url("/src/css/_badges.css");
+@import url("/src/css/_blockquotes.css");
+@import url("/src/css/_pagination.css");
+@import url("/src/css/_spinners.css");
+@import url("/src/css/_accordion.css");
+@import url("/src/css/_waves.css");
+@import url("/src/css/_modal.css");
+@import url("/src/css/_topbar.css");
+@import url("/src/css/_navigation.css");
+@import url("/src/css/_navigation-centered.css");
+@import url("/src/css/_navigation-dark.css");
+@import url("/src/css/_navigation-colored.css");
+@import url("/src/css/_subpages.css");
+@import url("/src/css/_footer.css");
+@import url("/src/css/_footer-light.css");
+@import url("/src/css/_footer-colored.css");
+@import url("/src/css/_footer-minimal.css");
+@import url("/src/css/_dropdown.css");
+@import url("/src/css/_collection.css");
+@import url("/src/css/_progress.css");
+@import url("/src/css/_backtotop.css");
+@import url("/src/css/_cards.css");
+@import url("/src/css/_tabs.css");
+@import url("/src/css/_iconboxes.css");
+@import url("/src/css/_chips.css");
+@import url("/src/css/_form-range-sliders.css");
+@import url("/src/css/_switches.css");
+@import url("/src/css/_form-elements.css");
+@import url("/src/css/_settings.css");
+@import url("/src/css/_parallax.css");
+@import url("/src/css/_chat.css");
+@import url("/src/css/_calendar.css");
+@import url("/src/css/_events.css");
+@import url("/src/css/_mailbox.css");
+@import url("/src/css/_profile.css");
+@import url("/src/css/_timeline.css");
+@import url("/src/css/_portfolio.css");
+@import url("/src/css/_blogs.css");
+@import url("/src/css/_products.css");
+@import url("/src/css/_login.css");
+@import url("/src/css/_welcome.css");
+@import url("/src/css/_error.css");
+@import url("/src/css/_search.css");
+@import url("/src/css/_pricing.css");
+@import url("/src/css/_invoice.css");
+@import url("/src/css/_notifications.css");
+@import url("/src/css/_profile-edit.css");
+@import url("/src/css/_app-settings.css");
+@import url("/src/css/_clients.css");
+@import url("/src/css/_fixed-footer-menu.css");
+@import url("/src/css/_perfect-scrollbar.css");
+@import url("/src/css/_tables.css");
+@import url("/src/css/_contactus.css");
+@import url("/src/css/_fancybox.css");
+@import url("/src/css/_image-filter.css");
+@import url("/src/css/_shadow.css");
+@import url("/src/css/_team.css");
+@import url("/src/css/_charts.css");
+@import url("/src/css/_activity.css");
+@import url("/src/css/_site-darkmode.css");
+@import url("/src/css/preloader.css");
+@import url("/src/css/settings.css");
+@import url("/src/css/variables.css");
