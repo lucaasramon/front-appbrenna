@@ -2,7 +2,7 @@
     background: green;
 }
 .page-footer{
-    background: #737A4C !important;
+    background: #f5f5f5  !important;
 }
 [data-header_align="left"] nav.navigation .brand-logo {
 	position: absolute;
@@ -81,6 +81,24 @@ nav a.sidenav-trigger i, nav .navicon i {
     height: 200px;
     left: 200px;
     top: 40px;
+}
+.waves-effect{
+    position: unset !important;
+}
+.ReactModal__Content--after-open{
+    width: 90%;
+}
+.btnFechar-modal{
+    display: block;
+    background-color: #B1C2D8 !important;
+}
+.btnSalvar-modal{
+    display: block;
+    background-color: #9B541C !important;
+    margin-bottom: 10px;
+}
+.inputForm{
+    box-shadow: 0 2px 6px 0 rgb(0 0 0 / 10%), 0 3px 1px -2px rgb(0 0 0 / 10%), 0 1px 5px 0 rgb(0 0 0 / 10%);
 }
 
 
