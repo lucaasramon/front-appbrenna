@@ -4,7 +4,7 @@ import "../../../App.css";
 import MenusFixos from "../../menusFixos";
 import MenuLateral from "../../menuLateral/menuLateral";
 import Modal from "react-modal";
-import { Link, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import moment from "moment";
 
 const customStyles = {
