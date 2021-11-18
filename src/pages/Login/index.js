@@ -5,6 +5,7 @@ import api from "../../server/api";
 import "../../App.css";
 
 function Login() {
+
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -27,14 +28,17 @@ function Login() {
       }
     }
 
-    let teste = response.data.filter(filtro);
-    console.log(teste);
+    let data = response.data.filter(filtro);
 
-    if (teste[0]) {
+    if (data[0]) {
+      console.log("data[0]",data[0])
+
+      localStorage.setItem('app-token',JSON.stringify(data[0]) )
       history.push("/Home");
     } else {
       alert("O E-mail ou senha está incorreto");
     }
+    
   }
 
   return (
