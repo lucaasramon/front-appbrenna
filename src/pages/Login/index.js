@@ -47,7 +47,7 @@ function Login() {
         <div class="login-bg access-login"></div>
         <div className=" container login-area">
           <div className="section">
-            <h3 className="bot-20 center white-text">Login</h3>
+            <h3 className="bot-20 center white-text">Faça Login</h3>
             <form>
               <div className="row">
                 <div className="input-field col s10 offset-s1">
