@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import api from "../../server/api";
 import "../../App.css";

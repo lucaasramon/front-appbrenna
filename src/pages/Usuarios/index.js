@@ -23,7 +23,7 @@ function Usuarios() {
 
     $("#modal2").modal("show");
   }
-
+  AbrirDetalhes()
   return (
     <>
       <MenuLateral />
@@ -50,7 +50,7 @@ function Usuarios() {
           <label for="">Telefone</label>
         </div>
         <div className="btn-novo">
-          <a class="waves-effect waves-light btn brown lighten-2">
+          <a href="{}" class="waves-effect waves-light btn brown lighten-2">
             Novo Usuario
           </a>
         </div>
@@ -76,7 +76,7 @@ function Usuarios() {
                       <td>{data.idade}</td>
                       <td>{data.numero}</td>
                       <td>
-                        <a class="waves-effect waves-light btn brown lighten-2">
+                        <a href="{}" class="waves-effect waves-light btn brown lighten-2">
                           Detalhes
                         </a>
                       </td>
