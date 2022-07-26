@@ -1,9 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
+
 import "../../App.css";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-class MenuLateral extends Component {
-  render() {
+function MenuLateral(){
+  
+  const history = useHistory();
+
+    function exitUser(){
+      localStorage.removeItem('app-token' )
+      history.push("/");
+    }
     return (
       <>
         <nav
@@ -12,7 +20,7 @@ class MenuLateral extends Component {
         >
           <div className="nav-wrapper container">
             <a
-              href="#"
+              href="{}"
               data-target=""
               className="waves-effect waves-circle navicon back-button htmlmode show-on-large "
             >
@@ -20,7 +28,7 @@ class MenuLateral extends Component {
             </a>
 
             <a
-              href="#"
+              href="{}"
               data-target="slide-nav"
               className="waves-effect waves-circle navicon sidenav-trigger show-on-large"
             >
@@ -28,20 +36,19 @@ class MenuLateral extends Component {
             </a>
 
             <a
-              href="#"
+              href="{}"
               data-target="slide-settings"
               className="waves-effect waves-circle navicon right sidenav-trigger show-on-large pulse"
             >
               <i className="mdi mdi-settings-outline"></i>
             </a>
 
-            <a
-              href="#"
-              data-target=""
-              className="waves-effect waves-circle navicon right nav-site-mode show-on-large"
+            <button
+              onClick={exitUser}
+              className="waves-effect waves-circle navicon right nav-site-mode show-on-large UserExite"
             >
-              <i className="mdi mdi-invert-colors mdi-transition1"></i>
-            </a>
+              <i className="mdi mdi-power mdi-transition1"></i>
+            </button>
           </div>
         </nav>
         <ul id="slide-nav" className="sidenav sidemenu">
@@ -126,7 +133,7 @@ class MenuLateral extends Component {
             <li className="lvl1 ">
               <div className="waves-effect ">
                 <a
-                  href="#"
+                  href="{}"
                   data-target="slide-settings"
                   className="sidenav-trigger"
                 >
@@ -271,7 +278,7 @@ class MenuLateral extends Component {
         </ul>
       </>
     );
-  }
+  
 }
 
 export default MenuLateral;

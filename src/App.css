@@ -1,6 +1,10 @@
 .corFundoTela{
     background: green;
 }
+.UserExite{
+    background: transparent;
+    border: transparent;
+}
 .page-footer{
     background: #f5f5f5  !important;
 }
