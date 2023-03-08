@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 // import $ from 'jquery';
 import "../../App.css";
@@ -17,9 +17,9 @@ function ResetSenha() {
             </div>
           </div>
           <div className="row center">
-            <a className="waves-effect waves-light btn-large bg-primary">
+            <button className="waves-effect waves-light btn-large bg-primary">
               Enviar
-            </a>
+            </button>
             <div className="spacer"></div>
             <div className="links">
               <Link to="/">

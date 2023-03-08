@@ -1,4 +1,3 @@
-import react from "react";
 import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
 import ResetSenha from "./pages/ResetSenha";
 import Login from "./pages/Login";
@@ -6,8 +5,6 @@ import NovoCadastro from "./pages/NovoCadastro";
 import Home from "./pages/Home";
 import Usuarios from "./pages/Usuarios";
 import Reestruturacao from "./pages/Tarefas/ReestruturaçãoCognitiva";
-// import PrivateRoute from "./privateRoute";
-import { Component } from "react/cjs/react.production.min";
 import { isAuthenticated } from "./auth";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -23,7 +20,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-export default () => {
+function route() {
   return (
     <BrowserRouter>
       <Switch>
@@ -45,3 +42,5 @@ export default () => {
     </BrowserRouter>
   );
 };
+
+export default route

@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 
-export default () => {
+function menuFixo() {
   return (
     <div className="App">
       <footer className="page-footer center social-colored ">
 
       </footer>
       <div className="backtotop">
-        <a className="btn-floating btn primary-bg">
+        <button href="#" className="btn-floating btn primary-bg">
           <i className="mdi mdi-chevron-up"></i>
-        </a>
+        </button>
       </div>
       <div className="footer-menu circular">
         <ul>
@@ -62,3 +62,5 @@ export default () => {
     </div>
   );
 };
+
+export default menuFixo;

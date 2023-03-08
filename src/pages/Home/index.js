@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import "../../App.css";
-import MenusFixos from "../menusFixos";
+import MenusFixos from "..";
 import MenusLateral from "../menuLateral/menuLateral";
 
 function Home() {

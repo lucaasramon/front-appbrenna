@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import api from "../../../server/api";
 import "../../../App.css";
-import MenusFixos from "../../menusFixos";
+import MenusFixos from "../..";
 import MenuLateral from "../../menuLateral/menuLateral";
 import Modal from "react-modal";
-import {  useHistory } from "react-router-dom";
 import moment from "moment";
 
 const customStyles = {
@@ -20,7 +19,6 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 function ReestruturacaoCognitiva() {
-  let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -36,7 +34,6 @@ function ReestruturacaoCognitiva() {
     setIsOpen(false);
   }
 
-  const history = useHistory();
   const [situacao, setSituacao] = useState("");
   const [pensamento, setPensamento] = useState("");
   const [emocao, setEmocao] = useState("");
@@ -48,15 +45,15 @@ function ReestruturacaoCognitiva() {
     e.preventDefault();
 
     if (
-      situacao == "" ||
-      pensamento == "" ||
-      emocao == "" ||
-      comportamento == "" ||
-      pensamentoAlternativo == ""
+      situacao === "" ||
+      pensamento === "" ||
+      emocao === "" ||
+      comportamento === "" ||
+      pensamentoAlternativo === ""
     ) {
       alert("Tem um campo vazio");
     } else {
-      const response = await api.post("/reestruturacaoCognitiva", {
+      await api.post("/reestruturacaoCognitiva", {
         user: "Lucas",
         data: moment(new Date()).format("DD/MM/YY"),
         situacao,
@@ -147,9 +144,9 @@ function ReestruturacaoCognitiva() {
                       <td>{data.comportamento}</td>
                       <td>{data.pensamentoAlternativo}</td>
                       <td>
-                        <a className="waves-effect waves-light btn brown lighten-2">
+                        <button className="waves-effect waves-light btn brown lighten-2">
                           Detalhes
-                        </a>
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -226,18 +223,18 @@ function ReestruturacaoCognitiva() {
 
             <div className="modal-footer">
               <hr />
-              <a
+              <button
                 type="submit"
                 className="waves-effect waves-light btn brown  btnSalvar-modal"
               >
                 Salvar
-              </a>
-              <a
+              </button>
+              <button
                 onClick={closeModal}
                 className="waves-effect waves-light btn brown  btnFechar-modal"
               >
                 Fechar
-              </a>
+              </button>
             </div>
           </form>
         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import "../../App.css";
-import MenusFixos from "../menusFixos";
+import MenusFixos from "..";
 import MenuLateral from "../menuLateral/menuLateral";
 import api from "../../server/api";
 

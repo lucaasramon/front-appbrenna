@@ -13,24 +13,25 @@ function NovoCadastro() {
   const [numero, setNumero] = useState("");
   const [numeroEmergencia, setNumeroEmergencia] = useState("");
   const [senha, setSenha] = useState("");
-  const [allUsuario, setAllUsuario] = useState([]);
+  const [,setAllUsuario] = useState([]);
+
 
   // Função que captura os valores do input e salva no banco.
   async function NovoCadastroSubmit(e) {
     e.preventDefault();
 
     if (
-      nome == "" ||
-      email == "" ||
-      endereco == "" ||
-      idade == "" ||
-      numero == "" ||
-      numeroEmergencia == "" ||
-      senha == ""
+      nome === "" ||
+      email === "" ||
+      endereco === "" ||
+      idade === "" ||
+      numero === "" ||
+      numeroEmergencia === "" ||
+      senha === ""
     ) {
       alert("Tem um campo vazio");
     } else {
-      const response = await api.post("/usuario", {
+      await api.post("/usuario", {
         nome,
         email,
         endereco,
