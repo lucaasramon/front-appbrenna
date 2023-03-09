@@ -4,7 +4,6 @@ import "../../../App.css";
 import MenusFixos from "../..";
 import MenuLateral from "../../menuLateral/menuLateral";
 import Modal from "react-modal";
-import moment from "moment";
 
 const customStyles = {
   content: {
@@ -16,6 +15,10 @@ const customStyles = {
   },
 };
 
+const fontSelct = {
+    padding: "0 0 0 8px",
+    color: "#9e9e9e"
+}
 Modal.setAppElement("#root");
 
 function ReestruturacaoCognitiva() {
@@ -34,55 +37,54 @@ function ReestruturacaoCognitiva() {
     setIsOpen(false);
   }
 
-  const [situacao, setSituacao] = useState("");
-  const [pensamento, setPensamento] = useState("");
-  const [emocao, setEmocao] = useState("");
-  const [comportamento, setComportamento] = useState("");
-  const [pensamentoAlternativo, setPensamentoAlternativo] = useState("");
-  const [allReestruturacao, setAllReestruturacao] = useState([]);
+  const [equipe, setEquipe] = useState("");
+  const [responsavel, setResponsavel] = useState("");
+  const [numeroInicial, setNumeroInicial] = useState("");
+  const [numeroFinal, setNumeroFinal] = useState("");
+  const [allEquipes, setEquipesAll] = useState([]);
+  const [allUsuario, setAllUsuario] = useState([]);
 
-  async function NovaReestruturacaoSubmit(e) {
+  async function EquipeSubmit(e) {
     e.preventDefault();
 
     if (
-      situacao === "" ||
-      pensamento === "" ||
-      emocao === "" ||
-      comportamento === "" ||
-      pensamentoAlternativo === ""
+      equipe === "" ||
+      responsavel === "" ||
+      numeroInicial === "" ||
+      numeroFinal === ""
     ) {
       alert("Tem um campo vazio");
     } else {
-      await api.post("/reestruturacaoCognitiva", {
-        user: "Lucas",
-        data: moment(new Date()).format("DD/MM/YY"),
-        situacao,
-        pensamento,
-        emocao,
-        comportamento,
-        pensamentoAlternativo,
+      await api.post("/equipes", {
+        equipe,
+        responsavel,
+        numeroInicial,
+        numeroFinal,
         priority: false,
       });
       alert("Cadastro realizado com sucesso!");
 
       // Limpa os campos preenchidos
-      setSituacao("");
-      setPensamento("");
-      setEmocao("");
-      setComportamento("");
-      setPensamentoAlternativo("");
-
+      setEquipe("");
+      setResponsavel("");
+      setNumeroInicial("");
+      setNumeroFinal("");
       setIsOpen(false);
     }
   }
 
   //Função que pega todos os usuarios do banco
   useEffect(() => {
-    async function retornaReestruturacoes() {
-      const response = await api.get("/reestruturacaoCognitiva");
-      setAllReestruturacao(response.data);
+    async function retornaEquipes() {
+      const response = await api.get("/equipes");
+      setEquipesAll(response.data);
     }
-    retornaReestruturacoes();
+    async function retornaUsuarios() {
+      const usuario = await api.get("/usuario");
+      setAllUsuario(usuario.data);
+    }
+    retornaEquipes();
+    retornaUsuarios();
   }, []);
 
   return (
@@ -91,27 +93,27 @@ function ReestruturacaoCognitiva() {
       <div class="container z-depth-1 subpages collection  cardFiltro">
         <div class="row ">
           <div class="col s12 pad-0">
-            <h5 class="bot-20 sec-tit">Reestruturação Cognitiva</h5>
+            <h5 class="bot-20 sec-tit">Equipes</h5>
           </div>
         </div>
         <hr />
         <div className="col s10 offset-s1">
-          <label for="">Filtros</label>
+          <label class="active" for="">Filtro</label>
         </div>
         <div className="input-field col s10 offset-s1">
           <input id="" type="text" className="" />
-          <label for="">Nome</label>
+          <label class="active" for="">Nome da Equipe</label>
         </div>
         <div className="input-field col s10 offset-s1">
           <input id="" type="text" className="" />
-          <label for="">Data</label>
+          <label class="active" for="">Nome do Responsavel</label>
         </div>
         <div className="btn-novo">
           <button
             onClick={openModal}
             class="waves-effect waves-light btn brown lighten-2"
           >
-            Nova Reestruturação Cognitiva
+            Nova Equipe
           </button>
         </div>
       </div>
@@ -123,26 +125,24 @@ function ReestruturacaoCognitiva() {
               <table className="striped colored primary">
                 <thead>
                   <tr>
-                    <th>Nome</th>
-                    <th>Data</th>
-                    <th>Situação</th>
-                    <th>Pensamento</th>
-                    <th>Emoção</th>
-                    <th>Comportamento</th>
-                    <th>Pensamento Alternativo</th>
+                    {/* nome */}
+                    <th>Equipe</th>
+                    {/* data */}
+                    <th>Responsavel</th>
+                    {/* Situação */}
+                    <th>Número inicial</th>
+                    {/* Pensamento */}
+                    <th>Número final</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {allReestruturacao.map((data) => (
+                  {allEquipes.map((data) => (
                     <tr>
-                      <td>{data.user}</td>
-                      <td>{data.data}</td>
-                      <td>{data.situacao}</td>
-                      <td>{data.pensamento}</td>
-                      <td>{data.emocao}</td>
-                      <td>{data.comportamento}</td>
-                      <td>{data.pensamentoAlternativo}</td>
+                      <td>{data.equipe}</td>
+                      <td>{data.responsavel}</td>
+                      <td>{data.numeroInicial}</td>
+                      <td>{data.numeroFinal}</td>
                       <td>
                         <button className="waves-effect waves-light btn brown lighten-2">
                           Detalhes
@@ -166,60 +166,59 @@ function ReestruturacaoCognitiva() {
         <div className="modal-content">
           <div class="row ">
             <div class="col s12 pad-0">
-              <h5 class="bot-20 sec-tit">Nova Reestruturação</h5>
+              <h5 class="bot-20 sec-tit">Cadastrar Equipe</h5>
             </div>
           </div>
-          <form onSubmit={NovaReestruturacaoSubmit}>
+          <form onSubmit={EquipeSubmit}>
             <div className="input-field col s10 offset-s1">
               <input
-                value={situacao}
-                onChange={(e) => setSituacao(e.target.value)}
-                id=""
+                value={equipe}
+                onChange={(e) => setEquipe(e.target.value)}
+                id="equipe"
                 type="text"
                 className=""
               />
-              <label for="">Situação</label>
+              <label class="active" for="equipe">Equipe</label>
+            </div>
+            <div className="col s12 m6">
+              <select
+                value={responsavel}
+                onChange={(e) => setResponsavel(e.target.value)}
+                id=""
+                type="text"
+                style={fontSelct}
+                className="input-field browser-default"
+              > 
+              <option value="" disabled>Responsavel</option>
+              {allUsuario.map((data) => (
+                <option value={data.nome}>{data.nome}</option>
+              ))}
+                
+              </select>   
+              
+           
             </div>
             <div className="input-field col s10 offset-s1">
               <input
-                value={pensamento}
-                onChange={(e) => setPensamento(e.target.value)}
+                value={numeroInicial}
+                onChange={(e) => setNumeroInicial(e.target.value)}
                 id=""
-                type="text"
+                type="number"
                 className=""
               />
-              <label for="">Pensamento</label>
+              <label class="active" for="">Número Inicial</label>
             </div>
             <div className="input-field col s10 offset-s1">
               <input
-                value={emocao}
-                onChange={(e) => setEmocao(e.target.value)}
+                value={numeroFinal}
+                onChange={(e) => setNumeroFinal(e.target.value)}
                 id=""
-                type="text"
+                type="number"
                 className=""
               />
-              <label for="">Emoção</label>
+              <label class="active" for="">Número Final</label>
             </div>
-            <div className="input-field col s10 offset-s1">
-              <input
-                value={comportamento}
-                onChange={(e) => setComportamento(e.target.value)}
-                id=""
-                type="text"
-                className=""
-              />
-              <label for="">Comportamento</label>
-            </div>
-            <div className="input-field col s10 offset-s1">
-              <input
-                value={pensamentoAlternativo}
-                onChange={(e) => setPensamentoAlternativo(e.target.value)}
-                id=""
-                type="text"
-                className=""
-              />
-              <label for="">Pensamento Alternativo</label>
-            </div>
+
 
             <div className="modal-footer">
               <hr />

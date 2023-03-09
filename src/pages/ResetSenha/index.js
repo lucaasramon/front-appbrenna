@@ -13,7 +13,7 @@ function ResetSenha() {
           <div className="row">
             <div className="input-field col s10 offset-s1">
               <input id="email3" type="email" className="validate" />
-              <label for="email3">Email</label>
+              <label  for="email3">Email</label>
             </div>
           </div>
           <div className="row center">

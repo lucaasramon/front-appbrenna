@@ -40,12 +40,12 @@ function menuFixo() {
               </a>
             </li>
           </Link>
-          <Link to="/ReestruturaçãoCognitiva">
+          <Link to="/Equipes">
             <li>
               <a href="sub-components.html">
                 {" "}
                 <i className="mdi mdi-flask-outline"></i>
-                <span>Tarefas</span>
+                <span>Equipes</span>
               </a>
             </li>
           </Link>

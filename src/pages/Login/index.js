@@ -58,7 +58,7 @@ function Login() {
                     type="email"
                     className="validate"
                   />
-                  <label for="email311">E-mail</label>
+                  <label class="active" for="email311">E-mail</label>
                 </div>
               </div>
               <div className="row">
@@ -70,7 +70,7 @@ function Login() {
                     type="password"
                     className="validate"
                   />
-                  <label for="pass311">Senha</label>
+                  <label class="active" for="pass311">Senha</label>
                 </div>
               </div>
               <div className="row center">

@@ -23,7 +23,7 @@ function Usuarios() {
 
     $("#modal2").modal("show");
   }
-  AbrirDetalhes()
+  // AbrirDetalhes()
   return (
     <>
       <MenuLateral />
@@ -39,15 +39,15 @@ function Usuarios() {
         </div>
         <div className="input-field col s10 offset-s1">
           <input id="" type="text" className="" />
-          <label for="">Nome</label>
+          <label class="active" for="">Nome</label>
         </div>
         <div className="input-field col s10 offset-s1">
           <input id="" type="text" className="" />
-          <label for="">Idade</label>
+          <label class="active" for="">Idade</label>
         </div>
         <div className="input-field col s10 offset-s1">
           <input id="" type="text" className="" />
-          <label for="">Telefone</label>
+          <label class="active" for="">Telefone</label>
         </div>
         <div className="btn-novo">
           <a href="{}" class="waves-effect waves-light btn brown lighten-2">

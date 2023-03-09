@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import NovoCadastro from "./pages/NovoCadastro";
 import Home from "./pages/Home";
 import Usuarios from "./pages/Usuarios";
-import Reestruturacao from "./pages/Tarefas/ReestruturaçãoCognitiva";
+import Reestruturacao from "./pages/Tarefas/Equipes";
 import { isAuthenticated } from "./auth";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -36,7 +36,7 @@ function route() {
         
         <PrivateRoute path="/Home" component={() => <Home />} />
         <PrivateRoute path="/Usuarios" component={() => <Usuarios />} />
-        <PrivateRoute path="/ReestruturaçãoCognitiva" component={() => <Reestruturacao />} />
+        <PrivateRoute path="/Equipes" component={() => <Reestruturacao />} />
 
       </Switch>
     </BrowserRouter>

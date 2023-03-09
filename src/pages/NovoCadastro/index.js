@@ -81,7 +81,7 @@ function NovoCadastro() {
                   type="text"
                   className="validate"
                 />
-                <label for="name3">Nome</label>
+                <label class="active" for="name3">Nome</label>
               </div>
             </div>
             <div className="row">
@@ -93,7 +93,7 @@ function NovoCadastro() {
                   type="email"
                   className="validate"
                 />
-                <label for="email3">E-mail</label>
+                <label class="active" for="email3">E-mail</label>
               </div>
             </div>
             <div className="row">
@@ -105,7 +105,7 @@ function NovoCadastro() {
                   type="text"
                   className="validate"
                 />
-                <label for="email3">Endereço</label>
+                <label class="active" for="email3">Endereço</label>
               </div>
             </div>
             <div className="row">
@@ -117,7 +117,7 @@ function NovoCadastro() {
                   type="text"
                   className="validate"
                 />
-                <label for="email3">Idade</label>
+                <label class="active" for="email3">Idade</label>
               </div>
             </div>
             <div className="row">
@@ -129,7 +129,7 @@ function NovoCadastro() {
                   type="tel"
                   className="validate"
                 />
-                <label for="phone3">Número</label>
+                <label class="active" for="phone3">Número</label>
               </div>
             </div>
             <div className="row">
@@ -141,13 +141,13 @@ function NovoCadastro() {
                   type="tel"
                   className="validate"
                 />
-                <label for="phone3">Contato de emergência</label>
+                <label class="active" for="phone3">Contato de emergência</label>
               </div>
             </div>
             <div className="row">
               <div className="input-field col s10 offset-s1">
                 <input id="pass3" type="password" className="validate" />
-                <label for="pass3">Senha</label>
+                <label class="active" for="pass3">Senha</label>
               </div>
             </div>
             <div className="row">
@@ -159,7 +159,7 @@ function NovoCadastro() {
                   type="password"
                   className="validate"
                 />
-                <label for="pass3">Repita sua senha</label>
+                <label class="active" for="pass3">Repita sua senha</label>
               </div>
             </div>
 
