@@ -1,9 +1,11 @@
 import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
-import ResetSenha from "./pages/ResetSenha";
+import ResetSenha from "./pages/Login/ResetSenha";
 import Login from "./pages/Login";
-import NovoCadastro from "./pages/NovoCadastro";
+import NovoCadastro from "./pages/Login/NovoCadastro";
+import CadastroEquipe from "./pages/Tarefas/cadastrarEquipe";
 import Home from "./pages/Home";
 import Usuarios from "./pages/Usuarios";
+import CadastroUsuario from "./pages/Usuarios/cadastroUsuario";
 import Reestruturacao from "./pages/Tarefas/Equipes";
 import { isAuthenticated } from "./auth";
 
@@ -33,14 +35,19 @@ function route() {
         <Route exact path="/NovoCadastro">
           <NovoCadastro />
         </Route>
-        
+        <Route exact path="/cadastroEquipe">
+          <CadastroEquipe />
+        </Route>
+        <Route exact path="/cadastroUsuario">
+          <CadastroUsuario />
+        </Route>
+
         <PrivateRoute path="/Home" component={() => <Home />} />
         <PrivateRoute path="/Usuarios" component={() => <Usuarios />} />
         <PrivateRoute path="/Equipes" component={() => <Reestruturacao />} />
-
       </Switch>
     </BrowserRouter>
   );
-};
+}
 
-export default route
+export default route;

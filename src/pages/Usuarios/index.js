@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import $ from "jquery";
 import "../../App.css";
 import MenusFixos from "..";
-import MenuLateral from "../menuLateral/menuLateral";
+import MenuLateral from "../Home/MenuLateral/menuLateral";
 import api from "../../server/api";
+import { Link } from "react-router-dom";
+
 
 function Usuarios() {
   const [allUsers, setAllUsers] = useState([]);
@@ -18,12 +19,7 @@ function Usuarios() {
     getUser();
   }, []);
 
-  function AbrirDetalhes(e) {
-    e.preventDefault();
 
-    $("#modal2").modal("show");
-  }
-  // AbrirDetalhes()
   return (
     <>
       <MenuLateral />
@@ -49,11 +45,13 @@ function Usuarios() {
           <input id="" type="text" className="" />
           <label class="active" for="">Telefone</label>
         </div>
+        <Link to="/cadastroUsuario">
         <div className="btn-novo">
           <a href="{}" class="waves-effect waves-light btn brown lighten-2">
             Novo Usuario
           </a>
         </div>
+        </Link>
       </div>
 
       <div class="container">

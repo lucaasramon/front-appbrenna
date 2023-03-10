@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import api from "../../server/api";
+import api from "../../../server/api";
 // import $ from 'jquery';
-import "../../App.css";
+import "../../../App.css";
 
 function NovoCadastro() {
   const history = useHistory();

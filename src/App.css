@@ -73,7 +73,7 @@ nav a.sidenav-trigger i, nav .navicon i {
     margin-top: 15px
 }
 .brown.lighten-2 {
-    background-color: #737a4c !important;
+    background-color: #4e4f4d !important;
 }
 .divResponsive{
     overflow-x: scroll !important;
@@ -104,7 +104,56 @@ nav a.sidenav-trigger i, nav .navicon i {
 .inputForm{
     box-shadow: 0 2px 6px 0 rgb(0 0 0 / 10%), 0 3px 1px -2px rgb(0 0 0 / 10%), 0 1px 5px 0 rgb(0 0 0 / 10%);
 }
+.componenteDeUsuario{
+    width: 100%;
+    display: inline-table;
+    height: 300px;
+    background: rgb(240, 240, 240);
+    margin-top: 20px;
+    border: 1px solid #c7c7c7;
+}
+.buttonAdicionar {
+    margin-top: 15px;
+}
 
+.valueMembro{
+    width: 100%;
+    padding: 4px 0px 0px 9px;
+    color: white;
+}
+
+.grupoMembro{
+    display: flex;
+    margin: 0px 7px 0px;
+    align-items: center;
+}
+.grupoMembro1 {
+    width: 20%;
+    background: gray;
+    height: 29px;
+    border-radius: 10px;;
+}
+.material-icons{
+    font-size: 25px !important;
+    margin-top: 8px;
+}
+.buttonMembro{
+    border: 0px;
+}
+.grupoBotao{
+    display: flex;
+}
+.btnVoltar{
+    margin-left: 10px;
+}
+
+.btnVoltar button {
+    background: #373a3c;
+}
+
+.divTamanho{
+    width: 100% !important;
+}
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600);
 @import url("/src/css/variables.css");
