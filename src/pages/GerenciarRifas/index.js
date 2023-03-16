@@ -12,7 +12,7 @@ function GerenciarRifas() {
   useEffect(() => {
     async function getTodasRifas() {
       const response = await api.get('/rifas');
-
+      console.log("RIFA#", response.data)
       setTodasRifas(response.data);
     }
 
@@ -22,10 +22,10 @@ function GerenciarRifas() {
   return (
     <>
       <MenuLateral />
-      <div class="container z-depth-1 subpages collection  cardFiltro">
-        <div class="row ">
-          <div class="col s12 pad-0">
-            <h5 class="bot-20 sec-tit">Gerenciar Rifas</h5>
+      <div className="container z-depth-1 subpages collection  cardFiltro">
+        <div className="row ">
+          <div className="col s12 pad-0">
+            <h5 className="bot-20 sec-tit">Gerenciar Rifas</h5>
           </div>
         </div>
         <hr />
@@ -34,22 +34,22 @@ function GerenciarRifas() {
         </div>
         <div className="input-field col s10 offset-s1">
           <input id="" type="text" className="" />
-          <label class="active" for="">
+          <label className="active" for="">
             Nome da Rifa
           </label>
         </div>
 
         <Link to="/Cadastrar-rifa">
           <div className="btn-novo">
-            <a href="{}" class="waves-effect waves-light btn brown lighten-2">
+            <a href="{}" className="waves-effect waves-light btn brown lighten-2">
               Nova Rifa
             </a>
           </div>
         </Link>
       </div>
 
-      <div class="container">
-        <div class="section">
+      <div className="container">
+        <div className="section">
           <div className="row ">
             <div className="col divResponsive s12 pad-0">
               <table className="striped colored primary">
@@ -74,7 +74,7 @@ function GerenciarRifas() {
                         <Moment format="DD/MM/YYYY">{rifa.dataFim}</Moment>
                       </td>
                       <td>
-                        <a href="{}" class="waves-effect waves-light btn brown lighten-2">
+                        <a href="{}" className="waves-effect waves-light btn brown lighten-2">
                           Detalhes
                         </a>
                       </td>

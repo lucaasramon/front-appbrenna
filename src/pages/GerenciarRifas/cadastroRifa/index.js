@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import api from '../../server/api';
-import '../../App.css';
+import React, { useState } from 'react';
+// import { Link, useHistory } from 'react-router-dom';
+import api from '../../../server/api';
+import '../../../App.css';
 
 const rowTwoInputs = {
   display: 'flex',
@@ -23,6 +23,7 @@ function CadastrarRifa() {
   const [valorBilhete, setValorBilhete] = useState('');
   const [numeroInicial, setNumeroInicial] = useState('');
   const [numeroFinal, setNumeroFinal] = useState('');
+  const [id, setId] = useState('');
 
   function toBack(e) {
     e.preventDefault();
@@ -31,24 +32,32 @@ function CadastrarRifa() {
   // Função que captura os valores do input e salva no banco.
   async function NovoCadastroSubmit(e) {
     e.preventDefault();
-    if (dataFim < dataInicio) {
-      return alert('Data de fim não pode ser maior que a data de início');
-    }
+    const ultimaRifa = await api.get('/rifas');
+
+    let id_counter = 0;
+    ultimaRifa.data.forEach((element) => {
+      if (element.id_counter > id_counter) {
+        id_counter = element.id_counter;
+      }
+    });
+    id_counter++;
 
     if (numeroInicial > numeroFinal) {
-      return alert('Número final não pode ser menor que o número inicial');
+      alert(' A numeração fim precisa ser maior que a numeração inicial');
+    } else {
+      await api.post('/rifas', {
+        id_counter,
+        titulo,
+        dataInicio,
+        dataFim,
+        valorBilhete,
+        numeroInicial,
+        numeroFinal,
+        priority: false,
+      });
+      alert('Cadastro realizado com sucesso!');
     }
 
-    await api.post('/rifas', {
-      titulo,
-      dataInicio,
-      dataFim,
-      valorBilhete,
-      numeroInicial,
-      numeroFinal,
-      priority: false,
-    });
-    alert('Cadastro realizado com sucesso!');
     // Limpa os campos preenchidos
     setTitulo('');
     setDataInicio('');
