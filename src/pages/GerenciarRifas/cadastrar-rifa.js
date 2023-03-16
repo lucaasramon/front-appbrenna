@@ -31,6 +31,14 @@ function CadastrarRifa() {
   // Função que captura os valores do input e salva no banco.
   async function NovoCadastroSubmit(e) {
     e.preventDefault();
+    if (dataFim < dataInicio) {
+      return alert('Data de fim não pode ser maior que a data de início');
+    }
+
+    if (numeroInicial > numeroFinal) {
+      return alert('Número final não pode ser menor que o número inicial');
+    }
+
     await api.post('/rifas', {
       titulo,
       dataInicio,
