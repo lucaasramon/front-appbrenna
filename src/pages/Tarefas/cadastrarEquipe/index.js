@@ -18,6 +18,8 @@ function CadastroEquipe() {
   const [numeroInicial, setNumeroInicial] = useState("");
   const [numeroFinal, setNumeroFinal] = useState("");
   const [allUsuario, setAllUsuario] = useState([]);
+  const [allRifas, setAllRifas] = useState([]);
+  console.log(valorBilhete)
 
   function setMembro(e) {
     const selectedValue = e.target.value;
@@ -75,7 +77,12 @@ function CadastroEquipe() {
       const usuario = await api.get("/usuario");
       setAllUsuario(usuario.data);
     }
+    async function retornaRifas() {
+      const rifas = await api.get("/rifas");
+      setAllRifas(rifas.data);
+    }
     retornaUsuarios();
+    retornaRifas();
   }, []);
   return (
     <>
@@ -87,18 +94,35 @@ function CadastroEquipe() {
             </div>
           </div>
           <form onSubmit={EquipeSubmit}>
-            <div className="input-field col s10 offset-s1">
-              <input
-                value={rifa}
-                onChange={(e) => setRifa(e.target.value)}
+            <div className="col s12 m6">
+              <label className="active">Rifa</label>
+              <select
+                // value={rifa}
+                onChange={(e) => {
+                  setRifa(e.target.value);
+                  allRifas.forEach((element) => {
+                    console.log("1# ",element._id)
+                    console.log("2# ", e.target.value)
+
+                    if(element._id == e.target.value){
+                      setValorBilhete(element.valorBilhete)
+                    }
+
+                  })
+                } }
                 id="rifa"
                 type="text"
-                className=""
-              />
-              <label className="active">Rifa</label>
+                className="input-field browser-default"
+              >
+                <option disabled selected>Escolha a rifa</option>
+                {allRifas.map((data) => (
+                  <option value={data._id}>{data.titulo}</option>
+                  ))}
+              </select>
             </div>
             <div className="input-field col s10 offset-s1">
               <input
+              disabled
                 value={valorBilhete}
                 onChange={(e) => setValorBilhete(e.target.value)}
                 id="valorBilhete"
@@ -164,8 +188,6 @@ function CadastroEquipe() {
                 style={fontSelct}
                 className="input-field browser-default"
               >
-                <option value="teste">teste</option>
-                <option value="teste2">teste2</option>
                 {allUsuario.map((data) => (
                   <option value={data.nome}>{data.nome}</option>
                 ))}

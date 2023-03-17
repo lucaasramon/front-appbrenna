@@ -23,8 +23,6 @@ function CadastrarRifa() {
   const [valorBilhete, setValorBilhete] = useState('');
   const [numeroInicial, setNumeroInicial] = useState('');
   const [numeroFinal, setNumeroFinal] = useState('');
-  const [id, setId] = useState('');
-
   
   function toBack(e) {
     e.preventDefault();
@@ -34,6 +32,7 @@ function CadastrarRifa() {
   async function NovoCadastroSubmit(e) {
     e.preventDefault();
     const ultimaRifa = await api.get('/rifas');
+    console.log("titulo", titulo)
 
     let id_counter = 0; 
     ultimaRifa.data.forEach(element => {
@@ -46,6 +45,7 @@ function CadastrarRifa() {
     if(numeroInicial > numeroFinal){
       alert(" A numeração fim precisa ser maior que a numeração inicial")
     }else{
+      console.log("titulo", titulo)
       await api.post('/rifas', {
         id_counter,
         titulo,
@@ -54,7 +54,6 @@ function CadastrarRifa() {
         valorBilhete,
         numeroInicial,
         numeroFinal,
-        priority: false,
       });
       alert('Cadastro realizado com sucesso!');
     }
