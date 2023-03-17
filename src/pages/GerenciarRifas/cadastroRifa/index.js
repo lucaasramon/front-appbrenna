@@ -53,7 +53,6 @@ function CadastrarRifa() {
         valorBilhete,
         numeroInicial,
         numeroFinal,
-        priority: false,
       });
       alert('Cadastro realizado com sucesso!');
     }
