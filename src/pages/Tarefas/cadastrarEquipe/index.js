@@ -81,6 +81,10 @@ function CadastroEquipe() {
       const rifas = await api.get("/rifas");
       setAllRifas(rifas.data);
     }
+    async function retornaRifas() {
+      const rifas = await api.get("/rifas");
+      setAllRifas(rifas.data);
+    }
     retornaUsuarios();
     retornaRifas();
   }, []);
@@ -97,13 +101,9 @@ function CadastroEquipe() {
             <div className="col s12 m6">
               <label className="active">Rifa</label>
               <select
-                // value={rifa}
                 onChange={(e) => {
                   setRifa(e.target.value);
                   allRifas.forEach((element) => {
-                    console.log("1# ",element._id)
-                    console.log("2# ", e.target.value)
-
                     if(element._id == e.target.value){
                       setValorBilhete(element.valorBilhete)
                     }

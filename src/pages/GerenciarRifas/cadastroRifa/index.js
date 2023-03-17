@@ -34,13 +34,13 @@ function CadastrarRifa() {
     const ultimaRifa = await api.get('/rifas');
     console.log("titulo", titulo)
 
-    let id_counter = 0; 
-    ultimaRifa.data.forEach(element => {
-        if(element.id_counter > id_counter){
-          id_counter = element.id_counter;
-        }
-      });
-    id_counter++ 
+    let id_counter = 0;
+    ultimaRifa.data.forEach((element) => {
+      if (element.id_counter > id_counter) {
+        id_counter = element.id_counter;
+      }
+    });
+    id_counter++;
 
     if(numeroInicial > numeroFinal){
       alert(" A numeração fim precisa ser maior que a numeração inicial")
@@ -57,7 +57,7 @@ function CadastrarRifa() {
       });
       alert('Cadastro realizado com sucesso!');
     }
-    
+
     // Limpa os campos preenchidos
     setTitulo('');
     setDataInicio('');
