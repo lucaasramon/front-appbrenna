@@ -86,7 +86,7 @@ function Login() {
                   {/* <Link to="/ResetSenha"><a href="" className='waves-effect'>Esqueceu sua senha?</a></Link> <span
                                         className="sep">|</span> */}
                   <Link to="/NovoCadastro">
-                    <a href="ui-pages-register.html" className="waves-effect">
+                    <a href="ui-pages-register.html" className="waves-effect-btn">
                       Novo Cadastro
                     </a>
                   </Link>

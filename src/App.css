@@ -1,242 +1,350 @@
-.corFundoTela {
-  background: green;
-}
-.UserExite {
-  background: transparent;
-  border: transparent;
-}
-.page-footer {
-  background: #f5f5f5 !important;
-}
-[data-header_align='left'] nav.navigation .brand-logo {
-  position: absolute;
-  left: -3px;
-  transform: translateX(0%);
-  -webkit-transform: translateX(0%);
-}
-[data-header_align='left'] nav.navigation .navicon[data-target='slide-nav'] {
-  float: right;
-  margin-right: -8px;
-}
-[data-header_align='left'] nav.navigation .navicon.back-button {
-  position: absolute;
-  right: 95px;
-}
-[data-header_align='left'] nav .navicon.sidenav-trigger {
-  margin-right: 18px;
-}
-[data-header_align='left'] nav.navigation .brand-logo {
-  position: absolute;
-  left: -3px;
-  transform: translateX(0%);
-  -webkit-transform: translateX(0%);
-}
-[data-header_align='left'] nav.navigation .navicon[data-target='slide-nav'] {
-  float: right;
-  margin-right: -8px;
-}
-[data-header_align='left'] nav.navigation .navicon.back-button {
-  position: absolute;
-  right: 95px;
-}
-[data-header_align='left'] nav .navicon.sidenav-trigger {
-  margin-right: 18px;
-}
-table.colored.primary thead th {
-  background: #373a3c !important;
-  color: #ffffff;
-}
-nav.navigation {
-  background-color: #737a4c !important;
-  position: relative;
-  top: 0px;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-}
-nav a.sidenav-trigger i,
-nav .navicon i {
-  color: #ffffff;
-}
-.cardFiltro {
-  background: #ffffff;
-  padding: 19px;
+.LogoApp {
+    background-image: url('./images/logo192.png');
+    background-size: 36px;
 }
 
-.subpages.collection {
-  margin-top: 10px;
+.page-title {
+    font-family: "Montserrat", sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    text-align :center;
 }
 
-.sec-tit:before,
-.sec-tit:after {
-  background: gray;
+.page-description {
+    font-family: "Montserrat", sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    text-align :center;
+    font-size: 12px;
+    
 }
-.btn-novo {
-  margin-top: 15px;
+
+@media only screen and (max-device-width: 900px) {
+    /* .menu { width:600px; } */
+}
+.acesso-mvp-topo {
+    font-family: "Montserrat", sans-serif;
+    background: url(./images/grid.png), linear-gradient(to right, rgba(0, 126, 174, .85), #5da6ff);
+    border: 1px solid #cfcfcf;
+    width: 450px;
+    height: 60px;
+    color: #ffffff;
+    padding: 20px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 12px 15px 20px rgba(0,0,0,.16);
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    margin: 70px 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    text-align :center;
+}
+
+
+.page-header-bg-gradient {
+    background: url(./images/grid.png), linear-gradient(to right, rgba(242, 242, 242, 0.85), rgba(223, 242, 255, 0.85));
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.boxBilhete{
+    background: #f9f9f9;
+    border: 1px solid #a3a2a2;
+    margin: 5px 5px 5px 5px;
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+    vertical-align: middle;
+    display: inline-block !important;
+    text-align :center;
+}
+
+.boxBilheteVendido {
+    background: #0bab40;
+    border: 1px solid #a3a2a2;    
+    color: #ffffff;
+    margin: 5px 5px 5px 5px !important;
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+    text-align :center;
+}
+
+.styleTextoVendido {
+    font-size: 14px;
+    padding: 0px;
+    margin: 0;
+}
+
+.styleTextoPendente {
+    font-size: 14px;
+    color: #fd2626;
+    padding: 0px;
+    margin: 0;
+}
+
+.conteinerBilhetes {
+    display: inline-block !important;
+    width: 110px !important;
+    vertical-align: middle;
+}
+
+.conteiner {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.corFundoTela{
+    background: green;
+}
+.UserExite{
+    background: transparent;
+    border: transparent;
+}
+.page-footer{
+    background: #f9f9f9  !important;
+}
+[data-header_align="left"] nav.navigation .brand-logo {
+	position: absolute;
+	left: -3px;
+	transform: translateX(0%);
+	-webkit-transform: translateX(0%);
+}
+[data-header_align="left"] nav.navigation .navicon[data-target="slide-nav"] {
+	float: right;
+	margin-right: -8px;
+}
+[data-header_align="left"] nav.navigation .navicon.back-button {
+	position: absolute;
+	right: 95px;
+}
+[data-header_align="left"] nav .navicon.sidenav-trigger {
+	margin-right: 18px;
+}
+[data-header_align="left"] nav.navigation .brand-logo {
+	position: absolute;
+	left: -3px;
+	transform: translateX(0%);
+	-webkit-transform: translateX(0%);
+}
+[data-header_align="left"] nav.navigation .navicon[data-target="slide-nav"] {
+	float: right;
+	margin-right: -8px;
+}
+[data-header_align="left"] nav.navigation .navicon.back-button {
+	position: absolute;
+	right: 95px;
+}
+[data-header_align="left"] nav .navicon.sidenav-trigger {
+	margin-right: 18px;
+}
+table.colored.primary thead th{
+    background: #313134 !important;
+    color: #ffffff;
+  }
+  nav.navigation {
+    /*background-color: #2685fd !important; #99c9ef*/
+    background: url(./images/grid.png), linear-gradient(to right, rgba(0, 126, 174, .85), #5da6ff);
+    position: relative;
+    top: 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+nav a.sidenav-trigger i, nav .navicon i {
+    color: #ffffff;
+}
+.cardFiltro{
+    background: #ffffff;
+    padding: 19px;
+    
+}
+
+.subpages.collection{
+    margin-top: 10px;
+}
+
+.sec-tit:before, .sec-tit:after{
+    background: gray;
+}
+.btn-novo{
+    margin-top: 15px
 }
 .brown.lighten-2 {
-  background-color: #4e4f4d !important;
+    background-color: #4e4f4d !important;
 }
-.divResponsive {
-  overflow-x: scroll !important;
+.divResponsive{
+    overflow-x: scroll !important;
 }
-.modal {
-  display: none;
-  position: fixed;
-  width: 200px;
-  height: 200px;
-  left: 200px;
-  top: 40px;
+.modal{
+    display: none;
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    left: 200px;
+    top: 40px;
 }
-.waves-effect {
-  position: unset !important;
+.waves-effect{
+    position: unset !important;
+    background-color: linear-gradient(to right, rgba(0, 126, 174, .85), rgba(0, 126, 174, .85)); /* #2685fd !important;*/
 }
-.ReactModal__Content--after-open {
-  width: 90%;
+
+.waves-effect-btn{
+    position: unset !important;
+    
 }
-.btnFechar-modal {
-  display: block;
-  background-color: #b1c2d8 !important;
+
+.ReactModal__Content--after-open{
+    width: 90%;
 }
-.btnSalvar-modal {
-  display: block;
-  background-color: #9b541c !important;
-  margin-bottom: 10px;
+.btnFechar-modal{
+    display: block;
+    background-color: #bed7f8 !important;
 }
-.inputForm {
-  box-shadow: 0 2px 6px 0 rgb(0 0 0 / 10%), 0 3px 1px -2px rgb(0 0 0 / 10%), 0 1px 5px 0 rgb(0 0 0 / 10%);
+.btnSalvar-modal{
+    display: block;
+    background-color: #2685fd !important;
+    margin-bottom: 10px;
 }
-.componenteDeUsuario {
-  width: 100%;
-  display: inline-table;
-  height: 300px;
-  background: rgb(240, 240, 240);
-  margin-top: 20px;
-  border: 1px solid #c7c7c7;
+.inputForm{
+    box-shadow: 0 2px 6px 0 rgb(0 0 0 / 10%), 0 3px 1px -2px rgb(0 0 0 / 10%), 0 1px 5px 0 rgb(0 0 0 / 10%);
+}
+.componenteDeUsuario{
+    width: 100%;
+    display: inline-table;
+    height: 300px;
+    background: rgb(240, 240, 240);
+    margin-top: 20px;
+    border: 1px solid #c7c7c7;
 }
 .buttonAdicionar {
-  margin-top: 15px;
+    margin-top: 15px;
 }
 
-.valueMembro {
-  width: 100%;
-  padding: 4px 0px 0px 9px;
-  color: white;
+.valueMembro{
+    width: 100%;
+    padding: 4px 0px 0px 9px;
+    color: white;
 }
 
-.grupoMembro {
-  display: flex;
-  margin: 0px 7px 0px;
-  align-items: center;
+.grupoMembro{
+    display: flex;
+    margin: 0px 7px 0px;
+    align-items: center;
 }
 .grupoMembro1 {
-  width: 20%;
-  background: gray;
-  height: 29px;
-  border-radius: 10px;
+    width: 20%;
+    background: gray;
+    height: 29px;
+    border-radius: 10px;;
 }
-.material-icons {
-  font-size: 25px !important;
-  margin-top: 8px;
+.material-icons{
+    font-size: 25px !important;
+    margin-top: 8px;
 }
-.buttonMembro {
-  border: 0px;
+.buttonMembro{
+    border: 0px;
 }
-.grupoBotao {
-  display: flex;
+.grupoBotao{
+    display: flex;
 }
-.btnVoltar {
-  margin-left: 10px;
+.btnVoltar{
+    margin-left: 10px;
 }
 
 .btnVoltar button {
-  background: #373a3c;
+    background: #373a3c;
 }
 
-.divTamanho {
-  width: 100% !important;
-}
-.rowTwoInputs {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 25px;
+.divTamanho{
+    width: 100% !important;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600);
-@import url('/src/css/variables.css');
-@import url('/src/css/_general.css');
-@import url('/src/css/_preloader.css');
-@import url('/src/css/_ui.css');
-@import url('/src/css/_datepicker.css');
-@import url('/src/css/_timepicker.css');
-@import url('/src/css/_carousel.css');
-@import url('/src/css/_carousel-home-screen.css');
-@import url('/src/css/_slider.css');
-@import url('/src/css/_testimonials.css');
-@import url('/src/css/_floating-action.css');
-@import url('/src/css/_tooltips.css');
-@import url('/src/css/_buttons.css');
-@import url('/src/css/_badges.css');
-@import url('/src/css/_blockquotes.css');
-@import url('/src/css/_pagination.css');
-@import url('/src/css/_spinners.css');
-@import url('/src/css/_accordion.css');
-@import url('/src/css/_waves.css');
-@import url('/src/css/_modal.css');
-@import url('/src/css/_topbar.css');
-@import url('/src/css/_navigation.css');
-@import url('/src/css/_navigation-centered.css');
-@import url('/src/css/_navigation-dark.css');
-@import url('/src/css/_navigation-colored.css');
-@import url('/src/css/_subpages.css');
-@import url('/src/css/_footer.css');
-@import url('/src/css/_footer-light.css');
-@import url('/src/css/_footer-colored.css');
-@import url('/src/css/_footer-minimal.css');
-@import url('/src/css/_dropdown.css');
-@import url('/src/css/_collection.css');
-@import url('/src/css/_progress.css');
-@import url('/src/css/_backtotop.css');
-@import url('/src/css/_cards.css');
-@import url('/src/css/_tabs.css');
-@import url('/src/css/_iconboxes.css');
-@import url('/src/css/_chips.css');
-@import url('/src/css/_form-range-sliders.css');
-@import url('/src/css/_switches.css');
-@import url('/src/css/_form-elements.css');
-@import url('/src/css/_settings.css');
-@import url('/src/css/_parallax.css');
-@import url('/src/css/_chat.css');
-@import url('/src/css/_calendar.css');
-@import url('/src/css/_events.css');
-@import url('/src/css/_mailbox.css');
-@import url('/src/css/_profile.css');
-@import url('/src/css/_timeline.css');
-@import url('/src/css/_portfolio.css');
-@import url('/src/css/_blogs.css');
-@import url('/src/css/_products.css');
-@import url('/src/css/_login.css');
-@import url('/src/css/_welcome.css');
-@import url('/src/css/_error.css');
-@import url('/src/css/_search.css');
-@import url('/src/css/_pricing.css');
-@import url('/src/css/_invoice.css');
-@import url('/src/css/_notifications.css');
-@import url('/src/css/_profile-edit.css');
-@import url('/src/css/_app-settings.css');
-@import url('/src/css/_clients.css');
-@import url('/src/css/_fixed-footer-menu.css');
-@import url('/src/css/_perfect-scrollbar.css');
-@import url('/src/css/_tables.css');
-@import url('/src/css/_contactus.css');
-@import url('/src/css/_fancybox.css');
-@import url('/src/css/_image-filter.css');
-@import url('/src/css/_shadow.css');
-@import url('/src/css/_team.css');
-@import url('/src/css/_charts.css');
-@import url('/src/css/_activity.css');
-@import url('/src/css/_site-darkmode.css');
-@import url('/src/css/preloader.css');
-@import url('/src/css/settings.css');
-@import url('/src/css/variables.css');
+@import url("/src/css/variables.css");
+@import url("/src/css/_general.css");
+@import url("/src/css/_preloader.css");
+@import url("/src/css/_ui.css");
+@import url("/src/css/_datepicker.css");
+@import url("/src/css/_timepicker.css");
+@import url("/src/css/_carousel.css");
+@import url("/src/css/_carousel-home-screen.css");
+@import url("/src/css/_slider.css");
+@import url("/src/css/_testimonials.css");
+@import url("/src/css/_floating-action.css");
+@import url("/src/css/_tooltips.css");
+@import url("/src/css/_buttons.css");
+@import url("/src/css/_badges.css");
+@import url("/src/css/_blockquotes.css");
+@import url("/src/css/_pagination.css");
+@import url("/src/css/_spinners.css");
+@import url("/src/css/_accordion.css");
+@import url("/src/css/_waves.css");
+@import url("/src/css/_modal.css");
+@import url("/src/css/_topbar.css");
+@import url("/src/css/_navigation.css");
+@import url("/src/css/_navigation-centered.css");
+@import url("/src/css/_navigation-dark.css");
+@import url("/src/css/_navigation-colored.css");
+@import url("/src/css/_subpages.css");
+@import url("/src/css/_footer.css");
+@import url("/src/css/_footer-light.css");
+@import url("/src/css/_footer-colored.css");
+@import url("/src/css/_footer-minimal.css");
+@import url("/src/css/_dropdown.css");
+@import url("/src/css/_collection.css");
+@import url("/src/css/_progress.css");
+@import url("/src/css/_backtotop.css");
+@import url("/src/css/_cards.css");
+@import url("/src/css/_tabs.css");
+@import url("/src/css/_iconboxes.css");
+@import url("/src/css/_chips.css");
+@import url("/src/css/_form-range-sliders.css");
+@import url("/src/css/_switches.css");
+@import url("/src/css/_form-elements.css");
+@import url("/src/css/_settings.css");
+@import url("/src/css/_parallax.css");
+@import url("/src/css/_chat.css");
+@import url("/src/css/_calendar.css");
+@import url("/src/css/_events.css");
+@import url("/src/css/_mailbox.css");
+@import url("/src/css/_profile.css");
+@import url("/src/css/_timeline.css");
+@import url("/src/css/_portfolio.css");
+@import url("/src/css/_blogs.css");
+@import url("/src/css/_products.css");
+@import url("/src/css/_login.css");
+@import url("/src/css/_welcome.css");
+@import url("/src/css/_error.css");
+@import url("/src/css/_search.css");
+@import url("/src/css/_pricing.css");
+@import url("/src/css/_invoice.css");
+@import url("/src/css/_notifications.css");
+@import url("/src/css/_profile-edit.css");
+@import url("/src/css/_app-settings.css");
+@import url("/src/css/_clients.css");
+@import url("/src/css/_fixed-footer-menu.css");
+@import url("/src/css/_perfect-scrollbar.css");
+@import url("/src/css/_tables.css");
+@import url("/src/css/_contactus.css");
+@import url("/src/css/_fancybox.css");
+@import url("/src/css/_image-filter.css");
+@import url("/src/css/_shadow.css");
+@import url("/src/css/_team.css");
+@import url("/src/css/_charts.css");
+@import url("/src/css/_activity.css");
+@import url("/src/css/_site-darkmode.css");
+@import url("/src/css/preloader.css");
+@import url("/src/css/settings.css");
+@import url("/src/css/variables.css");
