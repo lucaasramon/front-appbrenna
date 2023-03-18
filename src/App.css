@@ -22,16 +22,27 @@
     
 }
 
-@media only screen and (max-device-width: 900px) {
+@media only screen 
+    and (max-device-width: 380px)
+    and (max-device-width: 375px)
+    and (max-device-width: 390px)
+    and (max-device-width: 400px)
+    and (max-device-width: 480px)
+    and (max-device-width: 600px)
+    and (max-device-width: 1366px) {
     /* .menu { width:600px; } */
+    .acesso-mvp-topo {
+        width: 450px;
+        height: 60px;
+    }
 }
+
 .acesso-mvp-topo {
     font-family: "Montserrat", sans-serif;
     background: url(./images/grid.png), linear-gradient(to right, rgba(0, 126, 174, .85), #5da6ff);
-    border: 1px solid #cfcfcf;
-    width: 450px;
-    height: 60px;
+    border: 1px solid #cfcfcf;    
     color: #ffffff;
+    width: 490px;
     padding: 20px 30px;
     font-size: 16px;
     border-radius: 5px;
@@ -48,7 +59,6 @@
     margin-bottom: 0px;
     text-align :center;
 }
-
 
 .page-header-bg-gradient {
     background: url(./images/grid.png), linear-gradient(to right, rgba(242, 242, 242, 0.85), rgba(223, 242, 255, 0.85));
@@ -107,7 +117,7 @@
 }
 
 .corFundoTela{
-    background: green;
+    background: rgb(199, 199, 199);
 }
 .UserExite{
     background: transparent;
@@ -116,6 +126,7 @@
 .page-footer{
     background: #f9f9f9  !important;
 }
+
 [data-header_align="left"] nav.navigation .brand-logo {
 	position: absolute;
 	left: -3px;
