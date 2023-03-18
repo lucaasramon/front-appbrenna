@@ -5,7 +5,7 @@ import "../../../App.css";
 
 function CadastroBilhete() {
   const history = useHistory();
-  const [rifa, setNome] = useState("");
+  const [rifa_id, setNome] = useState("");
   const [valorBilhete, setEmail] = useState("");
   const [equipe, setEndereco] = useState("");
   const [numeroBilhete, setIdade] = useState("");
@@ -23,7 +23,7 @@ function CadastroBilhete() {
     e.preventDefault();
 
     if (
-      rifa === "" ||
+      rifa_id === "" ||
       valorBilhete === "" ||
       equipe === "" ||
       numeroBilhete === "" ||
@@ -34,7 +34,7 @@ function CadastroBilhete() {
       alert("Tem um campo vazio");
     } else {
       await api.post("/bilhetes", {
-        rifa,
+        rifa_id,
         valorBilhete,
         equipe,
         numeroBilhete,
@@ -79,7 +79,7 @@ function CadastroBilhete() {
           <div className="row">
             <div className="input-field col s10 divTamanho ">
               <input
-                value={rifa}
+                value={rifa_id}
                 onChange={(e) => setNome(e.target.value)}
                 id="name3"
                 type="text"

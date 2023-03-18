@@ -86,7 +86,7 @@ function ConsultaBilhetes() {
                         <div className="conteinerBilhetes">
                           <BoxBilhete 
                             numero={data.bilhete}
-                            data={data.bilheteVenda[0].DataVenda}
+                            data={data.bilheteVenda[0].dataVenda}
                           />
                         </div>
                       ))                   
@@ -95,7 +95,7 @@ function ConsultaBilhetes() {
                         <div className="conteinerBilhetes">
                           <BoxBilhete 
                             numero={data.bilhete}
-                            data={data.bilheteVenda[0].DataVenda}
+                            data={data.bilheteVenda[0].dataVenda}
                           />
                         </div> 
                       })    

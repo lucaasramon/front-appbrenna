@@ -10,7 +10,7 @@ Modal.setAppElement("#root");
 
 function ReestruturacaoCognitiva() {
   const [allEquipes, setEquipesAll] = useState([]);
-
+  
   //Função que pega todos os usuarios do banco
   useEffect(() => {
     async function retornaEquipes() {

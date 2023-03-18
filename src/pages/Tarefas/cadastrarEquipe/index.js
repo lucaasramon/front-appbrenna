@@ -11,15 +11,22 @@ const fontSelct = {
 Modal.setAppElement("#root");
 function CadastroEquipe() {
   const [equipe, setEquipe] = useState("");
-  const [rifa, setRifa] = useState("");
+  const [rifa_id, setRifa] = useState("");
   const [valorBilhete, setValorBilhete] = useState("");
   const [componentesEquipe, setComponentesEquipe] = useState([]);
   const [responsavel, setResponsavel] = useState("");
   const [numeroInicial, setNumeroInicial] = useState("");
   const [numeroFinal, setNumeroFinal] = useState("");
   const [allUsuario, setAllUsuario] = useState([]);
-  const [allRifas, setAllRifas] = useState([]);
-  console.log(valorBilhete)
+  const [allRifas, setAllRifas] = useState([]);  
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  // This function is called when the button is clicked the first time
+  const handleClick = (e) => {   
+    setIsDisabled(true);
+    // Submete o formulário após o clique em salvar
+    EquipeSubmit(e);
+  };
 
   function setMembro(e) {
     const selectedValue = e.target.value;
@@ -31,6 +38,11 @@ function CadastroEquipe() {
     setComponentesEquipe(componentesEquipe.filter((value, i) => i !== index));
   }
 
+  function setUsuarioResponsavel(e) {
+    const _selectedValue = e.target.value;
+    setResponsavel(_selectedValue);
+  }
+
   function toBack(e) {
     e.preventDefault();
     window.history.back();
@@ -38,10 +50,11 @@ function CadastroEquipe() {
 
   async function EquipeSubmit(e) {
     e.preventDefault();
-
+    console.log(rifa_id + " - Submit");
+    console.log({equipe,rifa_id,valorBilhete,componentesEquipe,responsavel,numeroInicial,numeroFinal}); 
     if (
       equipe === "" ||
-      rifa === "" ||
+      rifa_id === "" ||
       valorBilhete === "" ||
       componentesEquipe.length === 0 ||
       responsavel === "" ||
@@ -49,17 +62,19 @@ function CadastroEquipe() {
       numeroFinal === ""
     ) {
       alert("Tem um campo vazio");
+      setIsDisabled(false);
     } else {
       await api.post("/equipes", {
         equipe,
-        rifa,
+        rifa_id,
         valorBilhete,
         componentesEquipe,
         responsavel,
         numeroInicial,
         numeroFinal,
         priority: false,
-      });
+      }    
+      );
       alert("Cadastro realizado com sucesso!");
 
       window.location.href = "/Equipes";
@@ -80,11 +95,8 @@ function CadastroEquipe() {
     async function retornaRifas() {
       const rifas = await api.get("/rifas");
       setAllRifas(rifas.data);
-    }
-    async function retornaRifas() {
-      const rifas = await api.get("/rifas");
-      setAllRifas(rifas.data);
-    }
+    }    
+    
     retornaUsuarios();
     retornaRifas();
   }, []);
@@ -104,10 +116,9 @@ function CadastroEquipe() {
                 onChange={(e) => {
                   setRifa(e.target.value);
                   allRifas.forEach((element) => {
-                    if(element._id == e.target.value){
+                    if(element.rifa_id == e.target.value){
                       setValorBilhete(element.valorBilhete)
                     }
-
                   })
                 } }
                 id="rifa"
@@ -116,7 +127,7 @@ function CadastroEquipe() {
               >
                 <option disabled selected>Escolha a rifa</option>
                 {allRifas.map((data) => (
-                  <option value={data._id}>{data.titulo}</option>
+                  <option value={data.rifa_id}>{data.titulo}</option>
                   ))}
               </select>
             </div>
@@ -144,13 +155,12 @@ function CadastroEquipe() {
             <div className="col s12 m6">
               <select
                 value={responsavel}
-                onChange={(e) => setResponsavel(e.target.value)}
+                onChange={setUsuarioResponsavel}
                 id=""
                 type="text"
                 style={fontSelct}
-                className="input-field browser-default"
-              >
-                <option value="" disabled>
+                className="input-field browser-default">
+                <option value="" >
                   Responsavel
                 </option>
                 {allUsuario.map((data) => (
@@ -216,10 +226,12 @@ function CadastroEquipe() {
             </div>
             <div className="grupoBotao">
               <div className="modal-footer">
-                <button
+                <button 
+                  disabled={isDisabled}                  
+                  onClick={handleClick}
                   type="submit"
                   className="waves-effect waves-light btn bg-primary"
-                >
+                  style={isDisabled ? styles.buttonDisabled : styles.button}>
                   Salvar
                 </button>
               </div>
@@ -232,11 +244,21 @@ function CadastroEquipe() {
                 </button>
               </div>
             </div>
-          </form>
+          </form>          
         </div>
       </div>
     </>
   );
 }
+
+// Styles
+const styles = {  
+  button: {
+    cursor: 'pointer',
+  },
+  buttonDisabled: {
+    cursor: 'not-allowed',
+  },
+};
 
 export default CadastroEquipe;
