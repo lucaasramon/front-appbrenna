@@ -187,7 +187,7 @@ function CadastroUsuario() {
             <div>
               <button
                 type="submit"
-                className="waves-effect waves-light btn bg-primary btnSalvar-modal"
+                className="waves-effect waves-light btn bg-primary"
               >
                 Salvar
               </button>

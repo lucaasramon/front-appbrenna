@@ -129,7 +129,7 @@ function CadastrarRifa() {
 
           <div className="row grupoBotao">
             <div>
-              <button type="submit" className="waves-effect waves-light btn bg-primary btnSalvar-modal">
+              <button type="submit" className="waves-effect waves-light btn bg-primary">
                 Salvar
               </button>
             </div>

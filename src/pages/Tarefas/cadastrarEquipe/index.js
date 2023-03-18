@@ -218,7 +218,7 @@ function CadastroEquipe() {
               <div className="modal-footer">
                 <button
                   type="submit"
-                  className="waves-effect waves-light btn brown   btnSalvar-modal"
+                  className="waves-effect waves-light btn brown bg-primary"
                 >
                   Salvar
                 </button>
