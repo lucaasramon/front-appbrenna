@@ -20,14 +20,16 @@ function menuFixo() {
         </button>
       </div>
       <div className="footer-menu circular">
-        <ul>
-          <li>
-            <a href="#">
-              {" "}
-              <i className="mdi mdi-open-in-app"></i>
-              <span>Apps</span>
-            </a>
-          </li>
+        <ul>          
+        <Link to="/Gerenciar-rifas">
+            <li>
+              <a href="ui-apps.html">
+                {' '}
+                <i className="mdi mdi-open-in-app"></i>
+                <span>Gerenciar Rifas</span>
+              </a>
+            </li>
+          </Link>
           <Link to="/Usuarios">
             <li>
               <a href="sub-pages.html">

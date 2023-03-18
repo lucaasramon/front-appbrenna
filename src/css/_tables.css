@@ -37,13 +37,13 @@ table.colored.responsive-table tr td{
 
 table.colored.primary thead th{
   background: var(--primary-color);
-  color: #ffffff;
+  color: #d8e4f9;
 }
 table.colored.primary td{
-  background: rgba(var(--primary-rgb), 0.1);
+  background: rgba(var(--primary-rgb), 0.01);
 }
 table.colored.primary.responsive-table tbody{
-  background: rgba(var(--primary-rgb), 0.1);
+  background: rgba(var(--primary-rgb), 0.25);
 }
 
 
