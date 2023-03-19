@@ -52,6 +52,9 @@ function route() {
         <Route exact path="/ConsultaBilhetes">
           <ConsultaBilhetes />
         </Route>
+        <Route exact path="/ConsultaBilhetes/:equipe">
+          <ConsultaBilhetes />
+        </Route>
 
         <PrivateRoute path="/Home" component={() => <Home />} />
         <PrivateRoute path="/Usuarios" component={() => <Usuarios />} />
@@ -59,6 +62,7 @@ function route() {
         {/* <PrivateRoute path="/Gerenciar-rifas" component={() => <GerenciarRifas />} /> */}
         {/* <PrivateRoute path="/Cadastrar-rifa" component={() => <CadastrarRifa />} /> */}
         <PrivateRoute path="/ConsultaBilhetes" component={() => <ConsultaBilhetes />} />
+        <PrivateRoute path="/ConsultaBilhetes" component={(equipe) => <ConsultaBilhetes />} />
       </Switch>
     </BrowserRouter>
   );

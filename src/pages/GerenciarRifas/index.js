@@ -74,7 +74,7 @@ function GerenciarRifas() {
                         <Moment format="DD/MM/YYYY">{rifa.dataFim}</Moment>
                       </td>
                       <td>
-                        <a href="{}" className="waves-effect waves-light btn brown lighten-2">
+                        <a className="waves-effect waves-light btn brown lighten-2">
                           Detalhes
                         </a>
                       </td>

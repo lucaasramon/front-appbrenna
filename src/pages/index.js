@@ -23,7 +23,7 @@ function menuFixo() {
         <ul>          
         <Link to="/Gerenciar-rifas">
             <li>
-              <a href="ui-apps.html">
+              <a >
                 {' '}
                 <i className="mdi mdi-open-in-app"></i>
                 <span>Gerenciar Rifas</span>

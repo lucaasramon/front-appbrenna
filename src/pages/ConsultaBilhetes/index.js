@@ -8,12 +8,13 @@ import BoxBilhete from '../../components/BoxBilhete';
 function ConsultaBilhetes() {
     const [bilhetesAll, setBilhetesAll] = useState([]);
     const [equipesAll, setEquipesAll] = useState([]);
-    const [equipesItem, setItemEquipe] = useState();    
+    const [equipesItem, setItemEquipe] = useState("");    
    
     function setEquipeItem(e) {
       const selectedValue = e.target.value;      
-      setItemEquipe([...equipesItem, selectedValue]);   
-      getBilhetesEquipe(selectedValue);        
+      setItemEquipe([...equipesAll, selectedValue]);   
+      getBilhetesEquipe(selectedValue); 
+      //onSubmit(e);       
     }
 
     function getBilhetesEquipe(equipe) {

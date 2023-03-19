@@ -74,7 +74,7 @@ function Usuarios() {
                       <td>{data.idade}</td>
                       <td>{data.numero}</td>
                       <td>
-                        <a href="{}" class="waves-effect waves-light btn brown lighten-2">
+                        <a class="waves-effect waves-light btn brown lighten-2">
                           Detalhes
                         </a>
                       </td>
