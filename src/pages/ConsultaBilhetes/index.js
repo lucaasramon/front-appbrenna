@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import api from "../../server/api";
 import "../../App.css";
 import MenusFixos from "..";
@@ -8,35 +8,34 @@ import BoxBilhete from '../../components/BoxBilhete';
 function ConsultaBilhetes() {
     const [bilhetesAll, setBilhetesAll] = useState([]);
     const [equipesAll, setEquipesAll] = useState([]);
-    const [equipesItem, setItemEquipe] = useState("");    
-   
+    const [equipesItem, setItemEquipe] = useState("");
+    const [bilhetesEquipe, setBilhetesEquipe] = useState([]);
+
+
+    //Obtem a equipe selecionada:
     function setEquipeItem(e) {
-      const selectedValue = e.target.value;      
-      setItemEquipe([...equipesAll, selectedValue]);   
-      getBilhetesEquipe(selectedValue); 
-      //onSubmit(e);       
-    }
+      const selectedValue = e.target.value;
+      setItemEquipe(selectedValue);
 
-    function getBilhetesEquipe(equipe) {
-      console.log(equipe);
-      setBilhetesAll(bilhetesAll.filter((value, i) => i !== equipe));
+      console.log(selectedValue);
+      if (selectedValue !== 'Todas') {        
+        //Obtem os bilhetes por equipe selecionadas:
+        setBilhetesEquipe(bilhetesAll.filter(function (e) {return e.equipe === selectedValue}));
+        
+      }
     }
-
-    function onSubmit(e) {
-      e.preventDefault();
-
-      //limpa o select de equipes
-      setItemEquipe("");
-    }
-      
+          
     useEffect(() => {
       async function getBilhetes() {
-        const responseBilhetes = await api.get("/consultaBilhetes");  
+        const responseBilhetes = await api.get("/consultaBilhetes");
 
         setBilhetesAll(responseBilhetes.data);
       }  
       getBilhetes();
+
       setItemEquipe("Todas");
+
+      //setBilhetesEquipe('');
       
       async function getEquipes() {
         const responseEquipes = await api.get("/equipes");  
@@ -56,32 +55,28 @@ function ConsultaBilhetes() {
               <h5 class="bot-20 sec-tit">Consulta de Bilhetes</h5>
             </div>
           </div>
-          <form onSubmit={onSubmit}>
-            <div className="col s10 offset-s1">
-              <label for="">Filtrar</label>
-            </div>
-            <hr />
-            <label class="active" for="">Equipes:</label>
-            <div className="col s12 m6">
-              <select id="equipeSelecionada" type="submit"
-                value={equipesItem}
-                onChange={setEquipeItem}                
-                className="input-field browser-default">
-                  <option value="Todas">Todas...</option>
-                  {equipesAll.map((data) => (                  
-                    <option value={data.equipe}>{data.equipe}</option>
-                  ))}
-              </select>              
-            </div>
-          
-            <div class="container">
-              <div class="section">
-                <div >
-                  <div >
-                    <h6 class="sec-tit">Equipe: {equipesItem}</h6> 
-                  </div>
-                </div>              
-                <div className="conteiner">
+          <div className="col s10 offset-s1">
+            <label for="">Filtrar</label>
+          </div>
+          <hr />
+          <label class="active" for="">Equipes:</label>
+          <div className="col s12 m6">
+            <select id="equipeSelecionada" type="submit"
+              value={equipesItem}
+              onChange={setEquipeItem}                
+              className="input-field browser-default">
+                <option value="Todas">Todas...</option>
+                {equipesAll.map((data) => (                  
+                  <option value={data.equipe}>{data.equipe}</option>
+                ))}
+            </select>              
+          </div>
+          <div class="container">
+            <div class="section">
+              <div >
+                  <h6 class="sec-tit">Equipe: {equipesItem}</h6> 
+              </div>              
+              <div className="conteiner">
                 {(equipesItem === 'Todas') 
                   ? (bilhetesAll.map((data) => (
                         <div className="conteinerBilhetes">
@@ -92,20 +87,20 @@ function ConsultaBilhetes() {
                         </div>
                       ))                   
                     )
-                  : (bilhetesAll.map((data, equipe) => {
+                  : (console.log(bilhetesEquipe),
+                    bilhetesEquipe.map((data) => (
                         <div className="conteinerBilhetes">
                           <BoxBilhete 
                             numero={data.bilhete}
                             data={data.bilheteVenda[0].dataVenda}
                           />
                         </div> 
-                      })    
+                    ))    
                     )
-                }
-                </div>    
-              </div>
+                } 
+              </div>    
             </div>
-          </form>
+          </div>
         </div>
         <MenusFixos />
         </>
