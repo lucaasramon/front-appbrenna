@@ -5,13 +5,15 @@ import "../../../App.css";
 
 function CadastroBilhete() {
   const history = useHistory();
-  const [rifa, setNome] = useState("");
-  const [valorBilhete, setEmail] = useState("");
-  const [equipe, setEndereco] = useState("");
-  const [numeroBilhete, setIdade] = useState("");
-  const [meioPagamento, setNumero] = useState("");
-  const [responsavelVenda, setNumeroEmergencia] = useState("");
-  const [dataVenda, setSenha] = useState("");
+  const [rifa_id, setRifaId] = useState("");
+  const [valorBilhete, setValorBilhete] = useState("");
+  const [equipe, setEquipe] = useState("");
+  const [bilhete, setBilhete] = useState("");
+  const [meioPagamento, setMeioPagamento] = useState("");
+  const [responsavelVenda, setResponsavelVenda] = useState("");
+  const [identificacaoPagamento, setIdentificacao] = useState("");
+  const [dataVenda, setDataVenda] = useState("");
+  const [quemComprou, setQuemComprou] = useState("");
   const [, setAllUsuario] = useState([]);
 
   function toBack(e) {
@@ -23,10 +25,12 @@ function CadastroBilhete() {
     e.preventDefault();
 
     if (
-      rifa === "" ||
+      rifa_id === "" ||
+      quemComprou === "" ||
+      identificacaoPagamento === "" ||
       valorBilhete === "" ||
       equipe === "" ||
-      numeroBilhete === "" ||
+      bilhete === "" ||
       meioPagamento === "" ||
       responsavelVenda === "" ||
       dataVenda === ""
@@ -34,25 +38,22 @@ function CadastroBilhete() {
       alert("Tem um campo vazio");
     } else {
       await api.post("/bilhetes", {
-        rifa,
-        valorBilhete,
+        rifa_id,
+        bilhete,
         equipe,
-        numeroBilhete,
-        meioPagamento,
-        responsavelVenda,
-        dataVenda,
-        priority: false,
+        bilheteVenda: [
+          {
+            meioPagamento,
+            responsavelVenda,
+            identificacaoPagamento,
+            dataVenda,
+            quemComprou,
+            valorBilhete,
+          },
+        ],
+        status: false,
       });
       alert("Cadastro realizado com sucesso!");
-
-      // Limpa os campos preenchidos
-      setNome("");
-      setEmail("");
-      setEndereco("");
-      setIdade("");
-      setNumero("");
-      setNumeroEmergencia("");
-      setSenha("");
 
       history.push("/bilhetes");
     }
@@ -79,13 +80,13 @@ function CadastroBilhete() {
           <div className="row">
             <div className="input-field col s10 divTamanho ">
               <input
-                value={rifa}
-                onChange={(e) => setNome(e.target.value)}
+                value={rifa_id}
+                onChange={(e) => setRifaId(e.target.value)}
                 id="name3"
                 type="text"
                 className="validate"
               />
-              <label class="active" for="name3">
+              <label class="active">
                 Rifa
               </label>
             </div>
@@ -94,26 +95,32 @@ function CadastroBilhete() {
             <div className="input-field col s10 divTamanho ">
               <input
                 value={valorBilhete}
-                onChange={(e) => setEmail(e.target.value)}
-                id="email3"
-                type="email"
+                onChange={(e) => setValorBilhete(e.target.value)}
+                type="number"
                 className="validate"
               />
-              <label class="active" for="email3">
-                Valor do bilhete
-              </label>
+              <label class="active">Valor do bilhete</label>
+            </div>
+          </div>
+          <div className="row">
+            <div className="input-field col s10 divTamanho ">
+              <input
+                value={quemComprou}
+                onChange={(e) => setQuemComprou(e.target.value)}
+                className="validate"
+              />
+              <label class="active">Quem comprou</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s10 divTamanho ">
               <input
                 value={equipe}
-                onChange={(e) => setEndereco(e.target.value)}
-                id="email3"
+                onChange={(e) => setEquipe(e.target.value)}
                 type="text"
                 className="validate"
               />
-              <label class="active" for="email3">
+              <label class="active">
                 Equipe
               </label>
             </div>
@@ -121,13 +128,12 @@ function CadastroBilhete() {
           <div className="row">
             <div className="input-field col s10 divTamanho ">
               <input
-                value={numeroBilhete}
-                onChange={(e) => setIdade(e.target.value)}
-                id="email3"
-                type="text"
+                value={bilhete}
+                onChange={(e) => setBilhete(e.target.value)}
+                type="number"
                 className="validate"
               />
-              <label class="active" for="email3">
+              <label class="active">
                 Número do bilhete
               </label>
             </div>
@@ -136,12 +142,10 @@ function CadastroBilhete() {
             <div className="input-field col s10 divTamanho ">
               <input
                 value={meioPagamento}
-                onChange={(e) => setNumero(e.target.value)}
-                id="phone3"
-                type="tel"
+                onChange={(e) => setMeioPagamento(e.target.value)}
                 className="validate"
               />
-              <label class="active" for="phone3">
+              <label class="active">
                 Meio de Pagamento
               </label>
             </div>
@@ -150,20 +154,23 @@ function CadastroBilhete() {
             <div className="input-field col s10 divTamanho ">
               <input
                 value={responsavelVenda}
-                onChange={(e) => setNumeroEmergencia(e.target.value)}
-                id="phone3"
-                type="tel"
+                onChange={(e) => setResponsavelVenda(e.target.value)}
                 className="validate"
               />
-              <label class="active" for="phone3">
+              <label class="active">
                 Responsável pela venda
               </label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s10 divTamanho ">
-              <input id="pass3" type="password" className="validate" />
-              <label class="active" for="pass3">
+              <input
+
+                className="validate"
+                value={identificacaoPagamento}
+                onChange={(e) => setIdentificacao(e.target.value)}
+              />
+              <label class="active">
                 Identificação do pagamento
               </label>
             </div>
@@ -172,12 +179,11 @@ function CadastroBilhete() {
             <div className="input-field col s10 divTamanho ">
               <input
                 value={dataVenda}
-                onChange={(e) => setSenha(e.target.value)}
-                id="pass3"
-                type="password"
+                onChange={(e) => setDataVenda(e.target.value)}
                 className="validate"
+                type="date"
               />
-              <label class="active" for="pass3">
+              <label class="active">
                 Data de venda
               </label>
             </div>
