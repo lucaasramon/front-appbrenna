@@ -6,9 +6,10 @@ import CadastroEquipe from './pages/Tarefas/cadastrarEquipe';
 import Home from './pages/Home';
 import Bilhete from './pages/bilhete';
 import CadastroBilhete from './pages/bilhete/cadastroBilhete';
+import ConsultaBilhetes from "./pages/ConsultaBilhetes";
 import Usuarios from './pages/Usuarios';
 import CadastroUsuario from './pages/Usuarios/cadastroUsuario';
-import Reestruturacao from './pages/Tarefas/Equipes';
+import Equipes from './pages/Tarefas/Equipes';
 import { isAuthenticated } from './auth';
 import GerenciarRifas from './pages/GerenciarRifas';
 import CadastrarRifa from './pages/GerenciarRifas/cadastroRifa';
@@ -48,12 +49,20 @@ function route() {
         <Route exact path="/Cadastrar-rifa">
           <CadastrarRifa />
         </Route>
+        <Route exact path="/ConsultaBilhetes">
+          <ConsultaBilhetes />
+        </Route>
+        <Route exact path="/ConsultaBilhetes/:equipe">
+          <ConsultaBilhetes />
+        </Route>
 
         <PrivateRoute path="/Home" component={() => <Home />} />
         <PrivateRoute path="/Usuarios" component={() => <Usuarios />} />
-        <PrivateRoute path="/Equipes" component={() => <Reestruturacao />} />
+        <PrivateRoute path="/Equipes" component={() => <Equipes />} />
         {/* <PrivateRoute path="/Gerenciar-rifas" component={() => <GerenciarRifas />} /> */}
         {/* <PrivateRoute path="/Cadastrar-rifa" component={() => <CadastrarRifa />} /> */}
+        <PrivateRoute path="/ConsultaBilhetes" component={() => <ConsultaBilhetes />} />
+        <PrivateRoute path="/ConsultaBilhetes" component={(equipe) => <ConsultaBilhetes />} />
       </Switch>
     </BrowserRouter>
   );

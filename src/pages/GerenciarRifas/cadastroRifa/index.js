@@ -34,20 +34,20 @@ function CadastrarRifa() {
     const ultimaRifa = await api.get('/rifas');
     console.log("titulo", titulo)
 
-    let id_counter = 0;
+    let rifa_id = 0;
     ultimaRifa.data.forEach((element) => {
-      if (element.id_counter > id_counter) {
-        id_counter = element.id_counter;
+      if (element.rifa_id > rifa_id) {
+        rifa_id = element.id_counter;
       }
     });
-    id_counter++;
+    rifa_id++;
 
     if(numeroInicial > numeroFinal){
       alert(" A numeração fim precisa ser maior que a numeração inicial")
     }else{
       console.log("titulo", titulo)
       await api.post('/rifas', {
-        id_counter,
+        rifa_id,
         titulo,
         dataInicio,
         dataFim,

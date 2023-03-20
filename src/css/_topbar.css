@@ -62,14 +62,27 @@ nav .nav-wrapper {
 	z-index: 998;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen 
+and (max-device-width: 380px)
+and (max-device-width: 375px)
+and (max-device-width: 390px)
+and (max-device-width: 400px)
+and (max-device-width: 480px)
+and (max-device-width: 600px)
+and (max-device-width: 1366px)
+and (max-width: 600px) {
 	nav.navigation {
 		height: 56px;
-		line-height: 56px;
+		line-height: 56px;		
 	}
 	#logo-container {
 		line-height: 56px;
 	}
+	nav .nav-wrapper {
+		text-align: center;
+		width: 90%;
+	}	
+	
 }
 @media only screen and (min-width: 601px) {
 	nav .navicon.nav-site-mode,

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import "../../../App.css";
 // import 'bootstrap/dist/css/bootstrap.min.css';
+//<a href="/Home" data-target="" className="waves-effect waves-circle navicon back-button htmlmode show-on-large "><i className="mdi mdi-arrow-left" data-page=""></i></a>
 
 function MenuLateral(){
   
@@ -19,16 +20,12 @@ function MenuLateral(){
           role="navigation"
         >
           <div className="nav-wrapper container">
+            <a href="/Home" 
+               className="waves-effect navicon back-button htmlmode show-on-large">
+              <i className="LogoApp"></i></a>
+              
             <a
-              href="{}"
-              data-target=""
-              className="waves-effect waves-circle navicon back-button htmlmode show-on-large "
-            >
-              <i className="mdi mdi-arrow-left" data-page=""></i>
-            </a>
-
-            <a
-              href="{}"
+              href="/Home"
               data-target="slide-nav"
               className="waves-effect waves-circle navicon sidenav-trigger show-on-large"
             >
@@ -36,7 +33,7 @@ function MenuLateral(){
             </a>
 
             <a
-              href="{}"
+              href="/Home"
               data-target="slide-settings"
               className="waves-effect waves-circle navicon right sidenav-trigger show-on-large pulse"
             >
@@ -59,10 +56,10 @@ function MenuLateral(){
             <div className="user-view row">
               <div className="col s9 infoarea">
                 <a href="ui-app-profile.html">
-                  <span className="name">Emma Bailey</span>
+                  <span className="name"></span>
                 </a>
                 <a href="ui-app-profile.html">
-                  <span className="email">emma.bailey@gmail.com</span>
+                  <span className="email"></span>
                 </a>
               </div>
             </div>
