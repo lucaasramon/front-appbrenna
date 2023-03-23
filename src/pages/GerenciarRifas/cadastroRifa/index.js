@@ -34,7 +34,7 @@ function CadastrarRifa() {
     const ultimaRifa = await api.get('/rifas');
     console.log("titulo", titulo)
 
-    let rifa_id = 0;
+    let rifa_id = 1;
     ultimaRifa.data.forEach((element) => {
       if (element.rifa_id > rifa_id) {
         rifa_id = element.id_counter;
@@ -55,6 +55,8 @@ function CadastrarRifa() {
         numeroInicial,
         numeroFinal,
       });
+      window.location.href = "/Gerenciar-rifas";
+
       alert('Cadastro realizado com sucesso!');
     }
 

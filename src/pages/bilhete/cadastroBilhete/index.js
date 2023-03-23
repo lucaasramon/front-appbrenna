@@ -6,13 +6,14 @@ import "../../../App.css";
 function CadastroBilhete() {
   const history = useHistory();
   const [rifa_id, setRifaId] = useState("");
-  const [valorBilhete, setValorBilhete] = useState("");
+  const [valorBilhete, setValorBilhete] = useState();
   const [equipe, setEquipe] = useState("");
   const [bilhete, setBilhete] = useState("");
   const [meioPagamento, setMeioPagamento] = useState("");
   const [responsavelVenda, setResponsavelVenda] = useState("");
   const [identificacaoPagamento, setIdentificacao] = useState("");
   const [dataVenda, setDataVenda] = useState("");
+  const [rifaNome, setRifaNome] = useState("");
   const [quemComprou, setQuemComprou] = useState("");
   const [, setAllUsuario] = useState([]);
 
@@ -39,6 +40,7 @@ function CadastroBilhete() {
     } else {
       await api.post("/bilhetes", {
         rifa_id,
+        rifaNome,
         bilhete,
         equipe,
         bilheteVenda: [
@@ -51,11 +53,12 @@ function CadastroBilhete() {
             valorBilhete,
           },
         ],
-        status: false,
+        status: true,
       });
       alert("Cadastro realizado com sucesso!");
+      window.location.href = "/ConsultaBilhetes";
 
-      history.push("/bilhetes");
+      history.push("/ConsultaBilhetes");
     }
   }
 
@@ -65,6 +68,22 @@ function CadastroBilhete() {
       const response = await api.get("/bilhetes");
       setAllUsuario(response.data);
     }
+
+    async function pegarParamURL() {
+      let url = window.location.pathname;
+      let parts = url.split("/");
+      let lastPart = parts.pop() || parts.pop();
+
+      const response = await api.get(`/bilhetes/${lastPart}`);
+      console.log(response)
+
+      setRifaId(response.data.rifa_id)
+      setRifaNome(response.data.nomeRifa)
+      setValorBilhete(response.data.bilheteVenda[0].valorBilhete)
+      setEquipe(response.data.equipe)
+      setBilhete(response.data.bilhete)
+    }
+    pegarParamURL()
     verificarUsuario();
   }, []);
 
@@ -77,7 +96,7 @@ function CadastroBilhete() {
           </div>
         </div>
         <form onSubmit={NovoCadastroSubmit}>
-          <div className="row">
+          <div className="row rifaIdNone" >
             <div className="input-field col s10 divTamanho ">
               <input
                 value={rifa_id}
@@ -85,10 +104,22 @@ function CadastroBilhete() {
                 id="name3"
                 type="text"
                 className="validate"
+                disabled
               />
-              <label class="active">
-                Rifa
-              </label>
+              <label class="active">Rifa ID</label>
+            </div>
+          </div>
+          <div className="row">
+            <div className="input-field col s10 divTamanho ">
+              <input
+                value={rifaNome}
+                onChange={(e) => setRifaNome(e.target.value)}
+                id="name3"
+                type="text"
+                className="validate"
+                disabled
+              />
+              <label class="active">Rifa</label>
             </div>
           </div>
           <div className="row">
@@ -98,6 +129,7 @@ function CadastroBilhete() {
                 onChange={(e) => setValorBilhete(e.target.value)}
                 type="number"
                 className="validate"
+                disabled
               />
               <label class="active">Valor do bilhete</label>
             </div>
@@ -119,10 +151,9 @@ function CadastroBilhete() {
                 onChange={(e) => setEquipe(e.target.value)}
                 type="text"
                 className="validate"
+                disabled
               />
-              <label class="active">
-                Equipe
-              </label>
+              <label class="active">Equipe</label>
             </div>
           </div>
           <div className="row">
@@ -132,10 +163,9 @@ function CadastroBilhete() {
                 onChange={(e) => setBilhete(e.target.value)}
                 type="number"
                 className="validate"
+                disabled
               />
-              <label class="active">
-                Número do bilhete
-              </label>
+              <label class="active">Número do bilhete</label>
             </div>
           </div>
           <div className="row">
@@ -145,9 +175,7 @@ function CadastroBilhete() {
                 onChange={(e) => setMeioPagamento(e.target.value)}
                 className="validate"
               />
-              <label class="active">
-                Meio de Pagamento
-              </label>
+              <label class="active">Meio de Pagamento</label>
             </div>
           </div>
           <div className="row">
@@ -157,35 +185,27 @@ function CadastroBilhete() {
                 onChange={(e) => setResponsavelVenda(e.target.value)}
                 className="validate"
               />
-              <label class="active">
-                Responsável pela venda
-              </label>
+              <label class="active">Responsável pela venda</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s10 divTamanho ">
               <input
-
                 className="validate"
                 value={identificacaoPagamento}
                 onChange={(e) => setIdentificacao(e.target.value)}
               />
-              <label class="active">
-                Identificação do pagamento
-              </label>
+              <label class="active">Identificação do pagamento</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s10 divTamanho ">
               <input
-                value={dataVenda}
                 onChange={(e) => setDataVenda(e.target.value)}
                 className="validate"
                 type="date"
               />
-              <label class="active">
-                Data de venda
-              </label>
+              <label class="active">Data de venda</label>
             </div>
           </div>
 

@@ -281,7 +281,9 @@ nav a.sidenav-trigger i, nav .navicon i {
 .divTamanho{
     width: 100% !important;
 }
-
+.rifaIdNone{
+    display: none;
+}
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600);
 @import url("/src/css/variables.css");
 @import url("/src/css/_general.css");

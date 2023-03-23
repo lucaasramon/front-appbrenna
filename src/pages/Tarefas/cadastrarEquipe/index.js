@@ -12,7 +12,7 @@ Modal.setAppElement("#root");
 function CadastroEquipe() {
   const [equipe, setEquipe] = useState("");
   const [rifa_id, setRifa] = useState("");
-  const [valorBilhete, setValorBilhete] = useState("");
+  const [valorBilhete, setValorBilhete] = useState(null);
   const [componentesEquipe, setComponentesEquipe] = useState([]);
   const [responsavel, setResponsavel] = useState("");
   const [numeroInicial, setNumeroInicial] = useState("");
@@ -116,6 +116,7 @@ function CadastroEquipe() {
                 onChange={(e) => {
                   setRifa(e.target.value);
                   allRifas.forEach((element) => {
+                    console.log(element)
                     if(element.rifa_id == e.target.value){
                       setValorBilhete(element.valorBilhete)
                     }

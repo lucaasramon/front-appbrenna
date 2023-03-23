@@ -40,7 +40,7 @@ function route() {
         <Route exact path="/baixa-Bilhete">
           <Bilhete />
         </Route>
-        <Route exact path="/cadastro-Bilhete">
+        <Route exact path="/cadastro-Bilhete/:id">
           <CadastroBilhete />
         </Route>
         <Route exact path="/Gerenciar-rifas">
