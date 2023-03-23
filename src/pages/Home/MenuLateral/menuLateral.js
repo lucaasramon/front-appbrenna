@@ -1,9 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-
 import "../../../App.css";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-//<a href="/Home" data-target="" className="waves-effect waves-circle navicon back-button htmlmode show-on-large "><i className="mdi mdi-arrow-left" data-page=""></i></a>
 
 function MenuLateral(){
   

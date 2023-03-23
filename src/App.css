@@ -1,6 +1,100 @@
+  /* ini: Preloader */
+ 
+  #preloaderin {
+    position:fixed;
+    top:0 ;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#2685fd; /* cor do background que vai ocupar o body */
+    z-index:999; /* z-index para jogar para frente e sobrepor tudo */
+}
+#preloaderin .inner {
+    position: absolute;
+    top: 50% ; /* centralizar a parte interna do preload (onde fica a animação)*/
+    left: 50% ;
+    transform: translate(-50%, -50%);  
+}
+.bolas > div {
+  display: inline-block;
+  background-color: #fff;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  margin: 3px;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  animation-name: animarBola;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+   
+}
+.bolas > div:nth-child(1) {
+    animation-duration:0.75s ;
+    animation-delay: 0;
+}
+.bolas > div:nth-child(2) {
+    animation-duration: 0.75s ;
+    animation-delay: 0.12s;
+}
+.bolas > div:nth-child(3) {
+    animation-duration: 0.75s  ;
+    animation-delay: 0.24s;
+}
+ 
+@keyframes animarBola {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  16% {
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+    opacity: 0.7;
+  }
+  33% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1; 
+  } 
+}
+/* end: Preloader */
+
 .LogoApp {
     background-image: url('./images/logo192.png');
     background-size: 36px;
+}
+
+.BoxLogoApp-login {    
+    width: 48px;
+    height: 48px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 10 !important;    
+}
+
+.LogoApp-login {
+    background-image: url('./images/logo192.png');
+    background-size: 48px;
+    width: 48px;
+    height: 48px;    
+    margin-top: 0px;
+    margin-bottom: 30px;
+    position: absolute;
+    z-index: 11 !important;
+}
+.app-title {
+    font-family: "Montserrat", sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    text-align :center;
+    font-size: 18px;
 }
 
 .page-title {
@@ -10,6 +104,7 @@
     margin-top: 50px;
     margin-bottom: 0px;
     text-align :center;
+    font-size: 14px;
 }
 
 .page-description {
@@ -32,8 +127,11 @@
     and (max-device-width: 1366px) {
     /* .menu { width:600px; } */
     .acesso-mvp-topo {
-        width: 450px;
+        width: 360px;
         height: 60px;
+    }
+    .page-title {
+        width: 360px;
     }
 }
 
@@ -42,7 +140,6 @@
     background: url(./images/grid.png), linear-gradient(to right, rgba(0, 126, 174, .85), #5da6ff);
     border: 1px solid #cfcfcf;    
     color: #ffffff;
-    width: 490px;
     padding: 20px 30px;
     font-size: 16px;
     border-radius: 5px;

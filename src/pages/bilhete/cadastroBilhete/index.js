@@ -83,7 +83,7 @@ function CadastroBilhete() {
       setEquipe(response.data.equipe)
       setBilhete(response.data.bilhete)
     }
-    pegarParamURL()
+    pegarParamURL();
     verificarUsuario();
   }, []);
 
