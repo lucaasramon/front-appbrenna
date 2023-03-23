@@ -103,7 +103,10 @@ function ConsultaBilhetes() {
                 : (console.log(bilhetesEquipe),
                   bilhetesEquipe.map((data) => (
                     <div
-                      onClick={() => setIdBilhete(data._id)}
+                      onClick={() => {
+                        setIdBilhete(data._id)
+                        window.location.href = `/cadastro-Bilhete/${data._id}`;
+                      }}
                       className="conteinerBilhetes"
                     >
                       <BoxBilhete

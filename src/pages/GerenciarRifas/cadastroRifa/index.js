@@ -37,7 +37,7 @@ function CadastrarRifa() {
     let rifa_id = 1;
     ultimaRifa.data.forEach((element) => {
       if (element.rifa_id > rifa_id) {
-        rifa_id = element.id_counter;
+        rifa_id = element.rifa_id;
       }
     });
     rifa_id++;
