@@ -4,17 +4,22 @@ import api from "../../../server/api";
 // import $ from 'jquery';
 import "../../../App.css";
 
+const padding = {
+  padding: 0,
+};
+
 function NovoCadastro() {
   const history = useHistory();
   const [nome, setNome] = useState("");
+  const [equipes, setEquipes] = useState([]);
+  const [equipeId, setEquipeId] = useState(null);
   const [email, setEmail] = useState("");
   const [endereco, setEndereco] = useState("");
   const [idade, setIdade] = useState("");
   const [numero, setNumero] = useState("");
   const [numeroEmergencia, setNumeroEmergencia] = useState("");
   const [senha, setSenha] = useState("");
-  const [,setAllUsuario] = useState([]);
-
+  const [, setAllUsuario] = useState([]);
 
   // Função que captura os valores do input e salva no banco.
   async function NovoCadastroSubmit(e) {
@@ -33,6 +38,7 @@ function NovoCadastro() {
     } else {
       await api.post("/usuario", {
         nome,
+        equipeId,
         email,
         endereco,
         idade,
@@ -52,7 +58,7 @@ function NovoCadastro() {
       setNumeroEmergencia("");
       setSenha("");
 
-      history.push("/");
+      // history.push("/");
     }
   }
 
@@ -62,6 +68,15 @@ function NovoCadastro() {
       const response = await api.get("/usuario");
       setAllUsuario(response.data);
     }
+
+    async function getEquipes() {
+      console.log("teee")
+      const responseEquipes = await api.get("/equipes");
+
+      console.log("teste", responseEquipes);
+      setEquipes(responseEquipes.data);
+    }
+    getEquipes();
     verificarUsuario();
   }, []);
 
@@ -81,7 +96,28 @@ function NovoCadastro() {
                   type="text"
                   className="validate"
                 />
-                <label class="active" for="name3">Nome</label>
+                <label class="active" for="name3">
+                  Nome
+                </label>
+              </div>
+            </div>
+            <div className="row">
+              <div className=" col s10 offset-s1" style={padding}>
+                <select
+                  id="equipeSelecionada"
+                  onChange={(e) => {
+                    equipes.forEach((element) => {
+                      if (element._id == e.target.value) {
+                        setEquipeId(element._id);
+                      }
+                    });
+                  }}
+                  className="input-field input-field-user browser-default"
+                >
+                  {equipes.map((data) => (
+                    <option value={data._id}>{data.equipe}</option>
+                  ))}
+                </select>
               </div>
             </div>
             <div className="row">
@@ -93,7 +129,9 @@ function NovoCadastro() {
                   type="email"
                   className="validate"
                 />
-                <label class="active" for="email3">E-mail</label>
+                <label class="active" for="email3">
+                  E-mail
+                </label>
               </div>
             </div>
             <div className="row">
@@ -105,7 +143,9 @@ function NovoCadastro() {
                   type="text"
                   className="validate"
                 />
-                <label class="active" for="email3">Endereço</label>
+                <label class="active" for="email3">
+                  Endereço
+                </label>
               </div>
             </div>
             <div className="row">
@@ -117,7 +157,9 @@ function NovoCadastro() {
                   type="text"
                   className="validate"
                 />
-                <label class="active" for="email3">Idade</label>
+                <label class="active" for="email3">
+                  Idade
+                </label>
               </div>
             </div>
             <div className="row">
@@ -129,7 +171,9 @@ function NovoCadastro() {
                   type="tel"
                   className="validate"
                 />
-                <label class="active" for="phone3">Número</label>
+                <label class="active" for="phone3">
+                  Número
+                </label>
               </div>
             </div>
             <div className="row">
@@ -141,13 +185,17 @@ function NovoCadastro() {
                   type="tel"
                   className="validate"
                 />
-                <label class="active" for="phone3">Contato de emergência</label>
+                <label class="active" for="phone3">
+                  Contato de emergência
+                </label>
               </div>
             </div>
             <div className="row">
               <div className="input-field col s10 offset-s1">
                 <input id="pass3" type="password" className="validate" />
-                <label class="active" for="pass3">Senha</label>
+                <label class="active" for="pass3">
+                  Senha
+                </label>
               </div>
             </div>
             <div className="row">
@@ -159,7 +207,9 @@ function NovoCadastro() {
                   type="password"
                   className="validate"
                 />
-                <label class="active" for="pass3">Repita sua senha</label>
+                <label class="active" for="pass3">
+                  Repita sua senha
+                </label>
               </div>
             </div>
 

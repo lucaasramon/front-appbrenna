@@ -46,7 +46,6 @@ function ConsultaBilhetes() {
       setEquipesAll(responseEquipes.data);
     }
     getEquipes();
-
   }, []);
 
   return (
@@ -62,7 +61,9 @@ function ConsultaBilhetes() {
           <label for="">Filtrar</label>
         </div>
         <hr />
-        <label class="active" for="">Equipes:</label>
+        <label class="active" for="">
+          Equipes:
+        </label>
         <div className="col s12 m6">
           <select
             id="equipeSelecionada"
@@ -84,39 +85,37 @@ function ConsultaBilhetes() {
             </div>
             <div className="conteiner">
               {equipesItem === "Todas"
-                ? (bilhetesAll.map((bilhete) => (
+                ? bilhetesAll.map((data) => (
                     <div
                       onClick={() => {
-                        setIdBilhete(bilhete._id);
-                        window.location.href = `/cadastro-Bilhete/${bilhete._id}`;
+                        setIdBilhete(data._id);
+                        window.location.href = `/cadastro-Bilhete/${data._id}`;
                       }}
                       className="conteinerBilhetes"
                     >
                       <BoxBilhete
-                        numero={bilhete.bilhete}
-                        data={bilhete.bilheteVenda[0].dataVenda}
-                        status={bilhete.status}
+                        numero={data.bilhete}
+                        data={data.bilheteVenda[0].dataVenda}
+                        status={data.status}
                       />
                     </div>
                   ))
-                )
                 : (console.log(bilhetesEquipe),
-                  bilhetesEquipe.map((bilhete) => (
+                  bilhetesEquipe.map((data) => (
                     <div
                       onClick={() => {
-                        setIdBilhete(bilhete._id)
-                        window.location.href = `/cadastro-Bilhete/${bilhete._id}`;
+                        setIdBilhete(data._id)
+                        window.location.href = `/cadastro-Bilhete/${data._id}`;
                       }}
                       className="conteinerBilhetes"
                     >
                       <BoxBilhete
-                        numero={bilhete.bilhete}
-                        data={bilhete.bilheteVenda[0].dataVenda}
+                        numero={data.bilhete}
+                        data={data.bilheteVenda[0].dataVenda}
+                        status={data.status}
                       />
                     </div>
-                  ))
-                  )
-              }
+                  )))}
             </div>
           </div>
         </div>
