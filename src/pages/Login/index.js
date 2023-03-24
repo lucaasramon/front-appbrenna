@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import api from "../../server/api";
@@ -9,34 +9,44 @@ function Login() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [usuariosAll, setUsuarios] = useState([]);
 
-  async function verificarUsuario(e) {
+  const getUsuarios = async () => {
+    try {
+      
+      const response = await api.get("/usuario");
+      const data = response.data; 
+      setUsuarios(data);
+
+      console.log({usuariosAll});
+
+    } catch (error) {
+      console.log(error);
+    }
+};
+
+useEffect(() => {    
+  getUsuarios();    
+},[]);
+
+  function verificarUsuario(e) {
     e.preventDefault();
 
     let inputEmail = email;
     let inputSenha = senha;
-
-    const response = await api.get("/usuario");
-
-    function filtro(element) {
-      if (
-        element.email === inputEmail &&
-        element.senha === inputSenha &&
-        element.priority === false
-      ) {
-        return element;
-      }
-    }
-
-    let data = response.data.filter(filtro);
+        
+    let data = Array.isArray(usuariosAll) 
+      ? usuariosAll.filter(function (e) {return e.email === inputEmail && e.senha === inputSenha}) 
+      : [];
+    // console.log({inputEmail, inputSenha});
+    // console.log({usuariosAll});
+    // console.log(data[0]);
 
     if (data[0]) {
-      console.log("data[0]",data[0])
-
       localStorage.setItem('app-token',JSON.stringify(data[0]) )
       history.push("/Home");
     } else {
-      alert("O E-mail ou senha está incorreto");
+      alert("O E-mail ou senha está incorreto!");
     }
     
   }
@@ -44,8 +54,12 @@ function Login() {
   return (
     <>
       <div className="corFundoTela">
+
         <div class="login-bg access-login"></div>
         <div className=" container login-area">
+          <div className="BoxLogoApp-login">
+            <a ><i className="LogoApp-login"></i></a>
+          </div>
           <div className="section">
             <h3 className="bot-20 center white-text">Login</h3>
             <form>

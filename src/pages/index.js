@@ -8,6 +8,8 @@ function menuFixo() {
       
       <a class="acesso-mvp-topo">App da Igreja Cristã Despertar para controle de rifas.
       </a>
+      <h1 class="app-title">App da Igreja Cristã Despertar para controle de rifas.
+      </h1>      
       <h1 class="page-title" data-gtm-vis-recent-on-screen-6296301_541="415" 
       data-gtm-vis-first-on-screen-6296301_541="415" data-gtm-vis-total-visible-time-6296301_541="100" 
       data-gtm-vis-has-fired-6296301_541="1">Projeto: #AquisiçãodaSedeICD</h1>

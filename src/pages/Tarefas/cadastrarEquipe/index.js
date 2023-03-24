@@ -50,6 +50,8 @@ function CadastroEquipe() {
 
   async function EquipeSubmit(e) {
     e.preventDefault();
+    console.log(rifa_id + " - Submit");
+    console.log({equipe,rifa_id,valorBilhete,componentesEquipe,responsavel,numeroInicial,numeroFinal}); 
     if (
       equipe === "" ||
       rifa_id === "" ||
