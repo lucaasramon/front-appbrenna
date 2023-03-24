@@ -89,7 +89,11 @@ function ConsultaBilhetes() {
                     <div
                       onClick={() => {
                         setIdBilhete(data._id);
-                        window.location.href = `/cadastro-Bilhete/${data._id}`;
+                        if(data.status){
+                          alert("Está sendo feito uma tela para vizualizar os detalhes da venda.")
+                        }else{
+                          window.location.href = `/cadastro-Bilhete/${data._id}`;
+                        }
                       }}
                       className="conteinerBilhetes"
                     >
@@ -105,7 +109,11 @@ function ConsultaBilhetes() {
                     <div
                       onClick={() => {
                         setIdBilhete(data._id)
-                        window.location.href = `/cadastro-Bilhete/${data._id}`;
+                        if(data.status){
+                          alert("Está sendo feito uma tela para vizualizar os detalhes da venda.")
+                        }else{
+                          window.location.href = `/cadastro-Bilhete/${data._id}`;
+                        }
                       }}
                       className="conteinerBilhetes"
                     >
