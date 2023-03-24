@@ -38,7 +38,11 @@ function CadastroBilhete() {
     ) {
       alert("Tem um campo vazio");
     } else {
-      await api.post("/bilhetes", {
+
+      let url = window.location.pathname;
+      let parts = url.split("/");
+      let lastPart = parts.pop() || parts.pop();
+      await api.post(`/bilhetesUp/${lastPart}`, {
         rifa_id,
         rifaNome,
         bilhete,

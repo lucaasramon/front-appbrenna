@@ -58,14 +58,13 @@ function menuFixo() {
             </li>
           </Link>
 
-          <Link to="/ConsultaBilhetes"></Link>
+          <Link to="/ConsultaBilhetes">
           <li>
-            <a href="/ConsultaBilhetes">
               {" "}
               <i className="mdi mdi-view-dashboard"></i>
               <span>Consulta Bilhetes</span>
-            </a>
           </li>
+          </Link>
         </ul>
       </div>
     </div>
