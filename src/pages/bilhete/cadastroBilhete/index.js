@@ -137,17 +137,7 @@ function CadastroBilhete() {
               />
               <label class="active">Valor do bilhete</label>
             </div>
-          </div>
-          <div className="row">
-            <div className="input-field col s10 divTamanho ">
-              <input
-                value={quemComprou}
-                onChange={(e) => setQuemComprou(e.target.value)}
-                className="validate"
-              />
-              <label class="active">Quem comprou</label>
-            </div>
-          </div>
+          </div>          
           <div className="row">
             <div className="input-field col s10 divTamanho ">
               <input
@@ -175,11 +165,29 @@ function CadastroBilhete() {
           <div className="row">
             <div className="input-field col s10 divTamanho ">
               <input
-                value={meioPagamento}
-                onChange={(e) => setMeioPagamento(e.target.value)}
+                value={quemComprou}
+                onChange={(e) => setQuemComprou(e.target.value)}
                 className="validate"
               />
+              <label class="active">Quem comprou</label>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col s12 ">
               <label class="active">Meio de Pagamento</label>
+              <select
+                id="pgtoSelecionado"
+                value={meioPagamento}
+                onChange={(e) => setMeioPagamento(e.target.value)}
+                className="input-field browser-default"
+              >
+                <option value="">...</option>
+                <option value="PIX">PIX</option>
+                <option value="ESPECIE">ESPÉCIE</option>
+                <option value="CARTAO-DEBITO">CARTAO DE DÉBITO</option>
+                <option value="CARTAO-CREDITO">CARTAO DE CRÉDITO</option>
+                <option value="TRANSFERENCIA">TRANSFERÊNCIA</option>
+              </select>
             </div>
           </div>
           <div className="row">

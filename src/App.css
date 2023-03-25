@@ -118,6 +118,7 @@
 }
 
 @media only screen 
+    and (max-device-width: 280px)
     and (max-device-width: 380px)
     and (max-device-width: 375px)
     and (max-device-width: 390px)
@@ -127,17 +128,17 @@
     and (max-device-width: 1366px) {
     /* .menu { width:600px; } */
     .acesso-mvp-topo {
-        width: 360px;
+        width: 280px;
         height: 60px;
     }
     .page-title {
-        width: 360px;
+        width: 280px;
     }
 }
 
 .acesso-mvp-topo {
     font-family: "Montserrat", sans-serif;
-    background: url(./images/grid.png), linear-gradient(to right, rgba(0, 126, 174, .85), #5da6ff);
+    background: url(./images/grid.png), linear-gradient(to right, #2685fd, #5da6ff); /* rgba(0, 126, 174, .85*/
     border: 1px solid #cfcfcf;    
     color: #ffffff;
     padding: 20px 30px;
@@ -155,6 +156,7 @@
     margin-right: auto;
     margin-bottom: 0px;
     text-align :center;
+
 }
 
 .page-header-bg-gradient {
@@ -206,6 +208,7 @@
     display: inline-block !important;
     width: 110px !important;
     vertical-align: middle;
+    cursor:pointer;
 }
 
 .conteiner {
@@ -264,7 +267,7 @@ table.colored.primary thead th{
   }
   nav.navigation {
     /*background-color: #2685fd !important; #99c9ef*/
-    background: url(./images/grid.png), linear-gradient(to right, rgba(0, 126, 174, .85), #5da6ff);
+    background: url(./images/grid.png), linear-gradient(to right, #2685fd, #5da6ff); /*rgba(0, 126, 174, .85)*/
     position: relative;
     top: 0px;
     box-shadow: none;
@@ -384,7 +387,6 @@ nav a.sidenav-trigger i, nav .navicon i {
 .input-field-user{
     background-color: rgba(230, 230, 230,0.9) !important;
 }
-
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600);
 @import url("/src/css/variables.css");

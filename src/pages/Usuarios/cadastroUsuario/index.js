@@ -142,7 +142,7 @@ function CadastroUsuario() {
                 className="validate"
               />
               <label class="active" for="phone3">
-                Número
+                Celular
               </label>
             </div>
           </div>

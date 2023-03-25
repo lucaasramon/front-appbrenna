@@ -118,9 +118,9 @@ function ConsultaBilhetes() {
                       className="conteinerBilhetes"
                     >
                       <BoxBilhete
-                        numero={bilhete.bilhete}
-                        data={bilhete.bilheteVenda[0].dataVenda}
-                        status={bilhete.status}
+                        numero={data.bilhete}
+                        data={data.bilheteVenda[0].dataVenda}
+                        status={data.status}
                       />
                     </div>
                   )))}

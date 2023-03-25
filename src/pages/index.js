@@ -28,7 +28,7 @@ function menuFixo() {
               <a >
                 {' '}
                 <i className="mdi mdi-open-in-app"></i>
-                <span>Gerenciar Rifas</span>
+                <span>Rifas</span>
               </a>
             </li>
           </Link>
@@ -64,7 +64,7 @@ function menuFixo() {
           <li>
               {" "}
               <i className="mdi mdi-view-dashboard"></i>
-              <span>Consulta Bilhetes</span>
+              <span>Bilhetes</span>
           </li>
           </Link>
         </ul>

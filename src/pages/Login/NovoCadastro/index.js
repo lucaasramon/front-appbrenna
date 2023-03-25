@@ -5,7 +5,14 @@ import api from "../../../server/api";
 import "../../../App.css";
 
 const padding = {
-  padding: 0,
+  padding: 0,  
+};
+
+const _styleLista = {
+  index: 999,
+  color: '#fff',
+  justifyContent: 'left',
+  
 };
 
 function NovoCadastro() {
@@ -100,9 +107,12 @@ function NovoCadastro() {
                   Nome
                 </label>
               </div>
-            </div>
-            <div className="row">
+            </div>            
+            <div className="row">              
               <div className=" col s10 offset-s1" style={padding}>
+              <label class="active" style={_styleLista}>
+                Equipe
+              </label>
                 <select
                   id="equipeSelecionada"
                   onChange={(e) => {
@@ -117,7 +127,7 @@ function NovoCadastro() {
                   {equipes.map((data) => (
                     <option value={data._id}>{data.equipe}</option>
                   ))}
-                </select>
+                </select>     
               </div>
             </div>
             <div className="row">
@@ -129,7 +139,7 @@ function NovoCadastro() {
                   type="email"
                   className="validate"
                 />
-                <label class="active" for="email3">
+                <label class="active" for="email3" className="">
                   E-mail
                 </label>
               </div>
@@ -172,7 +182,7 @@ function NovoCadastro() {
                   className="validate"
                 />
                 <label class="active" for="phone3">
-                  Número
+                  Celular
                 </label>
               </div>
             </div>
