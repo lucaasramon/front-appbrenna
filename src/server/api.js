@@ -1,11 +1,11 @@
 import axios from "axios";
+require("dotenv").config();
 
+console.log(process.env.REACT_APP_BASE_URL)
 const api = axios.create({
   //DESENVOLVIMENTO:
-  //baseURL: "http://localhost:8080",
+  baseURL: process.env.REACT_APP_BASE_URL,
 
-  //PRODUÇÃO:
-  baseURL: "https://back-rifa.vercel.app",
 });
 
 export default api;

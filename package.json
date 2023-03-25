@@ -9,6 +9,8 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.23.0",
     "bootstrap": "^5.2.0",
+    "dotenv": "^16.0.3",
+    "env-cmd": "^10.1.0",
     "jquery": "^3.6.0",
     "materialize-css": "^1.0.0",
     "moment": "^2.29.4",
@@ -24,8 +26,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "start": "env-cmd react-scripts --openssl-legacy-provider start",
+    "build": "env-cmd react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

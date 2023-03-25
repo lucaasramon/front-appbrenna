@@ -59,8 +59,6 @@ function route() {
         <PrivateRoute path="/Home" component={() => <Home />} />
         <PrivateRoute path="/Usuarios" component={() => <Usuarios />} />
         <PrivateRoute path="/Equipes" component={() => <Equipes />} />
-        {/* <PrivateRoute path="/Gerenciar-rifas" component={() => <GerenciarRifas />} /> */}
-        {/* <PrivateRoute path="/Cadastrar-rifa" component={() => <CadastrarRifa />} /> */}
         <PrivateRoute path="/ConsultaBilhetes" component={() => <ConsultaBilhetes />} />
         <PrivateRoute path="/ConsultaBilhetes" component={(equipe) => <ConsultaBilhetes />} />
       </Switch>

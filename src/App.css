@@ -381,6 +381,11 @@ nav a.sidenav-trigger i, nav .navicon i {
 .rifaIdNone{
     display: none;
 }
+.input-field-user{
+    background-color: rgba(230, 230, 230,0.9) !important;
+}
+
+
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600);
 @import url("/src/css/variables.css");
 @import url("/src/css/_general.css");
