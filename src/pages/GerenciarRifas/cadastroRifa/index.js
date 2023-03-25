@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { Link, useHistory } from 'react-router-dom';
 import api from '../../../server/api';
 import '../../../App.css';
@@ -122,10 +122,10 @@ function CadastrarRifa() {
               <input onChange={(e) => setNumeroInicial(e.target.value)} required id="numeroInicio" type="number" className="validate" />
             </div>
             <div style={inputRowTwo} className="input-field col s10 divTamanho ">
-              <label class="active" for="dataFim">
+              <label class="active" for="numeroFim">
                 Fim
               </label>
-              <input onChange={(e) => setNumeroFinal(e.target.value)} required id="dataFim" type="number" className="validate" />
+              <input onChange={(e) => setNumeroFinal(e.target.value)} required id="numeroFim" type="number" className="validate" />
             </div>
           </div>
 
