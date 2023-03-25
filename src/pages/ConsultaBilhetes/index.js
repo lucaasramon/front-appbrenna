@@ -112,6 +112,7 @@ function ConsultaBilhetes() {
                       <BoxBilhete
                         numero={bilhete.bilhete}
                         data={bilhete.bilheteVenda[0].dataVenda}
+                        status={bilhete.status}
                       />
                     </div>
                   ))
