@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import api from "../../server/api";
 import "../../App.css";
+import { AuthContext } from "../../contexts/authContext";
 
 function Login() {
 
@@ -10,15 +11,13 @@ function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [usuariosAll, setUsuarios] = useState([]);
+  const { setUserAdm, userAdm} = useContext(AuthContext);  
 
   const getUsuarios = async () => {
-    try {
-      
+    try {      
       const response = await api.get("/usuario");
       const data = response.data; 
       setUsuarios(data);
-
-      console.log({usuariosAll});
 
     } catch (error) {
       console.log(error);
@@ -38,11 +37,12 @@ useEffect(() => {
     let data = Array.isArray(usuariosAll) 
       ? usuariosAll.filter(function (e) {return e.email === inputEmail && e.senha === inputSenha}) 
       : [];
-    // console.log({inputEmail, inputSenha});
-    // console.log({usuariosAll});
-    // console.log(data[0]);
+    console.log(data[0]);
 
     if (data[0]) {
+      //configura se o usuário é admin para toda a aplicação
+      data[0].isAdmin ? setUserAdm(true) : setUserAdm(false);
+
       localStorage.setItem('app-token',JSON.stringify(data[0]) )
       history.push("/Home");
     } else {

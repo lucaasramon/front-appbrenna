@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import '../../App.css';
 import MenusFixos from '..';
 import MenuLateral from '../Home/MenuLateral/menuLateral';
 import api from '../../server/api';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
+import { AuthContext } from "../../contexts/authContext";
 
 function GerenciarRifas() {
   const [todasRifas, setTodasRifas] = useState([]);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const value = useContext(AuthContext);
 
   useEffect(() => {
     async function getTodasRifas() {
@@ -17,6 +20,9 @@ function GerenciarRifas() {
     }
 
     getTodasRifas();
+
+    //Desabilita o botão se não for administrador
+    setIsDisabled(value.userAdm);
   }, []);
 
   return (
@@ -38,14 +44,16 @@ function GerenciarRifas() {
             Nome da Rifa
           </label>
         </div>
-
-        <Link to="/Cadastrar-rifa">
-          <div className="btn-novo">
-            <a href="{}" className="waves-effect waves-light btn brown lighten-2">
-              Nova Rifa
-            </a>
-          </div>
-        </Link>
+        <div className="btn-novo">
+          {isDisabled
+            ? (<Link to="/Cadastrar-rifa" style={styles.button}>
+                <button class="waves-effect waves-light btn brown lighten-2">
+                Nova Rifa
+                </button>
+              </Link>)
+            : <Link to="#" style={styles.buttonDisabled} >Botão Desabilitado</Link>
+          }  
+        </div>
       </div>
 
       <div className="container">
@@ -90,5 +98,15 @@ function GerenciarRifas() {
     </>
   );
 }
+
+// Styles
+const styles = {  
+  button: {
+    cursor: 'pointer',
+  },
+  buttonDisabled: {
+    cursor: 'not-allowed',    
+  },
+};
 
 export default GerenciarRifas;

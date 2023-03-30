@@ -13,11 +13,18 @@ function CadastroUsuario() {
   const [numeroEmergencia, setNumeroEmergencia] = useState("");
   const [senha, setSenha] = useState("");
   const [, setAllUsuario] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   function toBack(e) {
     e.preventDefault();
     window.history.back();
   }
+
+  const onChangeIsAdmin = (e) => {
+    setIsAdmin(e.target.checked);
+    console.log({'checkbox': e.target.checked});
+  }
+
   // Função que captura os valores do input e salva no banco.
   async function NovoCadastroSubmit(e) {
     e.preventDefault();
@@ -41,6 +48,7 @@ function CadastroUsuario() {
         numero,
         numeroEmergencia,
         senha,
+        isAdmin,
         priority: false,
       });
       alert("Cadastro realizado com sucesso!");
@@ -53,15 +61,15 @@ function CadastroUsuario() {
       setNumero("");
       setNumeroEmergencia("");
       setSenha("");
-
-      history.push("/Usuario");
+      setIsAdmin(false);
+      history.push("/Usuarios");
     }
   }
 
   //Função que pega todos os usuarios do banco
   useEffect(() => {
     async function verificarUsuario() {
-      const response = await api.get("/usuarios");
+      const response = await api.get("/usuario");
       setAllUsuario(response.data);
     }
     verificarUsuario();
@@ -69,7 +77,7 @@ function CadastroUsuario() {
 
   return (
     <>
-      <div class="container z-depth-1 subpages collection  cardFiltro">
+      <div className="container z-depth-1 subpages collection  cardFiltro">
         <div className="row ">
           <div className="col s12 pad-0">
             <h5 className="bot-20 sec-tit">Cadastro de Usuarios</h5>
@@ -85,7 +93,7 @@ function CadastroUsuario() {
                 type="text"
                 className="validate"
               />
-              <label class="active" for="name3">
+              <label className="active" htmlFor="name3">
                 Nome
               </label>
             </div>
@@ -95,11 +103,11 @@ function CadastroUsuario() {
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                id="email3"
+                id="iptemail"
                 type="email"
                 className="validate"
               />
-              <label class="active" for="email3">
+              <label className="active" htmlFor="iptemail">
                 E-mail
               </label>
             </div>
@@ -109,11 +117,11 @@ function CadastroUsuario() {
               <input
                 value={endereco}
                 onChange={(e) => setEndereco(e.target.value)}
-                id="email3"
+                id="iptendereco"
                 type="text"
                 className="validate"
               />
-              <label class="active" for="email3">
+              <label className="active" htmlFor="iptendereco">
                 Endereço
               </label>
             </div>
@@ -123,11 +131,11 @@ function CadastroUsuario() {
               <input
                 value={idade}
                 onChange={(e) => setIdade(e.target.value)}
-                id="email3"
+                id="iptIdade"
                 type="text"
                 className="validate"
               />
-              <label class="active" for="email3">
+              <label className="active" htmlFor="iptIdade">
                 Idade
               </label>
             </div>
@@ -137,11 +145,11 @@ function CadastroUsuario() {
               <input
                 value={numero}
                 onChange={(e) => setNumero(e.target.value)}
-                id="phone3"
+                id="iptCelular"
                 type="tel"
                 className="validate"
               />
-              <label class="active" for="phone3">
+              <label className="active" htmlFor="iptCelular">
                 Celular
               </label>
             </div>
@@ -151,19 +159,19 @@ function CadastroUsuario() {
               <input
                 value={numeroEmergencia}
                 onChange={(e) => setNumeroEmergencia(e.target.value)}
-                id="phone3"
+                id="iptEmergencia"
                 type="tel"
                 className="validate"
               />
-              <label class="active" for="phone3">
+              <label className="active" htmlFor="iptEmergencia">
                 Contato de emergência
               </label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s10 divTamanho ">
-              <input id="pass3" type="password" className="validate" />
-              <label class="active" for="pass3">
+              <input id="iptSenha" type="password" className="validate" />
+              <label className="active" htmlFor="iptSenha">
                 Senha
               </label>
             </div>
@@ -173,13 +181,27 @@ function CadastroUsuario() {
               <input
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
-                id="pass3"
+                id="iptSenhaRepita"
                 type="password"
                 className="validate"
               />
-              <label class="active" for="pass3">
+              <label className="active" htmlFor="iptSenhaRepita">
                 Repita sua senha
               </label>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col s12">
+              <label>
+                <input
+                  checked={isAdmin}
+                  onChange={onChangeIsAdmin}
+                  id="ckbIsAdmin"
+                  type="checkbox"
+                  className="filled-in"
+                />
+                <span className="active" >É usuário Administrador?</span>
+              </label>              
             </div>
           </div>
 

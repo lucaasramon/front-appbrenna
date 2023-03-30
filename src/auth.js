@@ -1,5 +1,4 @@
-export const isAuthenticated = () => {
-    console.log("EEE", localStorage.getItem("app-token"))
+export const isAuthenticated = () => {    
     if(localStorage.getItem("app-token")){
         return true
     }   
