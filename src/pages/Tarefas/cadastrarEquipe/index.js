@@ -18,15 +18,8 @@ function CadastroEquipe() {
   const [numeroInicial, setNumeroInicial] = useState("");
   const [numeroFinal, setNumeroFinal] = useState("");
   const [allUsuario, setAllUsuario] = useState([]);
-  const [allRifas, setAllRifas] = useState([]);  
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [allRifas, setAllRifas] = useState([]);
 
-  // This function is called when the button is clicked the first time
-  const handleClick = (e) => {   
-    setIsDisabled(true);
-    // Submete o formulário após o clique em salvar
-    EquipeSubmit(e);
-  };
 
   function setMembro(e) {
     const selectedValue = e.target.value;
@@ -51,7 +44,15 @@ function CadastroEquipe() {
   async function EquipeSubmit(e) {
     e.preventDefault();
     console.log(rifa_id + " - Submit");
-    console.log({equipe,rifa_id,valorBilhete,componentesEquipe,responsavel,numeroInicial,numeroFinal}); 
+    console.log({
+      equipe,
+      rifa_id,
+      valorBilhete,
+      componentesEquipe,
+      responsavel,
+      numeroInicial,
+      numeroFinal,
+    });
     if (
       equipe === "" ||
       rifa_id === "" ||
@@ -62,27 +63,32 @@ function CadastroEquipe() {
       numeroFinal === ""
     ) {
       alert("Tem um campo vazio");
-      setIsDisabled(false);
     } else {
-      await api.post("/equipes", {
-        equipe,
-        rifa_id,
-        valorBilhete,
-        componentesEquipe,
-        responsavel,
-        numeroInicial,
-        numeroFinal,
-        priority: false,
-      }    
-      );
-      alert("Cadastro realizado com sucesso!");
+      await api
+        .post("/equipes", {
+          equipe,
+          rifa_id,
+          valorBilhete,
+          componentesEquipe,
+          responsavel,
+          numeroInicial,
+          numeroFinal,
+          priority: false,
+        })
+        .then((response) => {
+          alert("Cadastro realizado com sucesso!");
+          window.location.href = "/Equipes";
 
-      window.location.href = "/Equipes";
+          setEquipe("");
+          setResponsavel("");
+          setNumeroInicial("");
+          setNumeroFinal("");
+        })
+        .catch((error) => {
+          alert(error.response.data.message);
+        });
+
       // Limpa os campos preenchidos
-      setEquipe("");
-      setResponsavel("");
-      setNumeroInicial("");
-      setNumeroFinal("");
     }
   }
 
@@ -95,8 +101,8 @@ function CadastroEquipe() {
     async function retornaRifas() {
       const rifas = await api.get("/rifas");
       setAllRifas(rifas.data);
-    }    
-    
+    }
+
     retornaUsuarios();
     retornaRifas();
   }, []);
@@ -116,25 +122,27 @@ function CadastroEquipe() {
                 onChange={(e) => {
                   setRifa(e.target.value);
                   allRifas.forEach((element) => {
-                    console.log(element)
-                    if(element.rifa_id == e.target.value){
-                      setValorBilhete(element.valorBilhete)
+                    console.log(element);
+                    if (element.rifa_id == e.target.value) {
+                      setValorBilhete(element.valorBilhete);
                     }
-                  })
-                } }
+                  });
+                }}
                 id="rifa"
                 type="text"
                 className="input-field browser-default"
               >
-                <option disabled selected>Escolha a rifa</option>
+                <option disabled selected>
+                  Escolha a rifa
+                </option>
                 {allRifas.map((data) => (
                   <option value={data.rifa_id}>{data.titulo}</option>
-                  ))}
+                ))}
               </select>
             </div>
             <div className="input-field col s10 offset-s1">
               <input
-              disabled
+                disabled
                 value={valorBilhete}
                 onChange={(e) => setValorBilhete(e.target.value)}
                 id="valorBilhete"
@@ -160,10 +168,9 @@ function CadastroEquipe() {
                 id=""
                 type="text"
                 style={fontSelct}
-                className="input-field browser-default">
-                <option value="" >
-                  Responsavel
-                </option>
+                className="input-field browser-default"
+              >
+                <option value="">Responsavel</option>
                 {allUsuario.map((data) => (
                   <option value={data.nome}>{data.nome}</option>
                 ))}
@@ -227,12 +234,11 @@ function CadastroEquipe() {
             </div>
             <div className="grupoBotao">
               <div className="modal-footer">
-                <button 
-                  disabled={isDisabled}                  
-                  onClick={handleClick}
+                <button
+                 
                   type="submit"
                   className="waves-effect waves-light btn bg-primary"
-                  style={isDisabled ? styles.buttonDisabled : styles.button}>
+                >
                   Salvar
                 </button>
               </div>
@@ -245,7 +251,7 @@ function CadastroEquipe() {
                 </button>
               </div>
             </div>
-          </form>          
+          </form>
         </div>
       </div>
     </>
@@ -253,12 +259,12 @@ function CadastroEquipe() {
 }
 
 // Styles
-const styles = {  
+const styles = {
   button: {
-    cursor: 'pointer',
+    cursor: "pointer",
   },
   buttonDisabled: {
-    cursor: 'not-allowed',
+    cursor: "not-allowed",
   },
 };
 
