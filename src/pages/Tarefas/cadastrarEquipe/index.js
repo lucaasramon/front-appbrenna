@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
 import api from "../../../server/api";
 import "../../../App.css";
-import Modal from "react-modal";
 
 const fontSelct = {
   padding: "0 0 0 8px",
   color: "#9e9e9e",
 };
 
-Modal.setAppElement("#root");
+
 function CadastroEquipe() {
   const [equipe, setEquipe] = useState("");
   const [rifa_id, setRifa] = useState("");
   const [valorBilhete, setValorBilhete] = useState(null);
   const [componentesEquipe, setComponentesEquipe] = useState([]);
+  const [numerosDeBilhetes, setNumerosDeBilhetes] = useState([]);
   const [responsavel, setResponsavel] = useState("");
-  const [numeroInicial, setNumeroInicial] = useState("");
-  const [numeroFinal, setNumeroFinal] = useState("");
   const [allUsuario, setAllUsuario] = useState([]);
   const [allRifas, setAllRifas] = useState([]);
+
 
 
   function setMembro(e) {
@@ -50,17 +49,13 @@ function CadastroEquipe() {
       valorBilhete,
       componentesEquipe,
       responsavel,
-      numeroInicial,
-      numeroFinal,
     });
     if (
       equipe === "" ||
       rifa_id === "" ||
       valorBilhete === "" ||
       componentesEquipe.length === 0 ||
-      responsavel === "" ||
-      numeroInicial === "" ||
-      numeroFinal === ""
+      responsavel === ""
     ) {
       alert("Tem um campo vazio");
     } else {
@@ -71,8 +66,7 @@ function CadastroEquipe() {
           valorBilhete,
           componentesEquipe,
           responsavel,
-          numeroInicial,
-          numeroFinal,
+          numerosDeBilhetes,
           priority: false,
         })
         .then((response) => {
@@ -81,14 +75,10 @@ function CadastroEquipe() {
 
           setEquipe("");
           setResponsavel("");
-          setNumeroInicial("");
-          setNumeroFinal("");
         })
         .catch((error) => {
           alert(error.response.data.message);
         });
-
-      // Limpa os campos preenchidos
     }
   }
 
@@ -176,26 +166,8 @@ function CadastroEquipe() {
                 ))}
               </select>
             </div>
-            <div className="input-field col s10 offset-s1">
-              <input
-                value={numeroInicial}
-                onChange={(e) => setNumeroInicial(e.target.value)}
-                id=""
-                type="number"
-                className=""
-              />
-              <label className="active">Número Inicial</label>
-            </div>
-            <div className="input-field col s10 offset-s1">
-              <input
-                value={numeroFinal}
-                onChange={(e) => setNumeroFinal(e.target.value)}
-                id=""
-                type="number"
-                className=""
-              />
-              <label className="active">Número Final</label>
-            </div>
+
+         
             <hr />
             <label>Componentes da equipe</label>
             <div className="col s12 m6">
@@ -235,7 +207,6 @@ function CadastroEquipe() {
             <div className="grupoBotao">
               <div className="modal-footer">
                 <button
-                 
                   type="submit"
                   className="waves-effect waves-light btn bg-primary"
                 >

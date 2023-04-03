@@ -6,10 +6,27 @@ import MenuLateral from "../../Home/MenuLateral/menuLateral";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
 
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "50%",
+  },
+};
+
 Modal.setAppElement("#root");
 
 function ReestruturacaoCognitiva() {
   const [allEquipes, setEquipesAll] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [numeroInicial, setNumeroInicial] = useState("");
+  const [numeroFinal, setNumeroFinal] = useState("");
+  const [idRifa, setIdRifa] = useState("");
+  console.log(idRifa)
   
   //Função que pega todos os usuarios do banco
   useEffect(() => {
@@ -78,6 +95,85 @@ function ReestruturacaoCognitiva() {
                       <td>{data.numeroInicial}</td>
                       <td>{data.numeroFinal}</td>
                       <td>
+                      <div>
+              <button
+                type="button"
+                onClick={(e) => setModalIsOpen(true) && setIdRifa(data._id)}
+                className="waves-effect waves-light btn bg-primary"
+              >
+                Adicione os números de bilhetes
+              </button>
+              <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={() => setModalIsOpen(false)}
+                style={customStyles}
+              >
+                <h2>Números de bilhetes</h2>
+                <input value={numeroFinal}></input>
+                <div className="input-field col s10 offset-s1">
+                  <input
+                    value={numeroInicial}
+                    onChange={(e) => setNumeroInicial(e.target.value)}
+                    id=""
+                    type="number"
+                    className=""
+                  />
+                  <label className="active">Número Inicial</label>
+                </div>
+                <div className="input-field col s10 offset-s1">
+                  <input
+                    value={numeroFinal}
+                    onChange={(e) => setNumeroFinal(e.target.value)}
+                    id=""
+                    type="number"
+                    className=""
+                  />
+                  <label className="active">Número Final</label>
+                </div>
+                <br />
+                <div className="grupoBotao">
+                  <div className="modal-footer">
+                    <button
+                      type="submit"
+                      className="waves-effect waves-light btn bg-primary"
+                    >
+                      Adicionar
+                    </button>
+                  </div>
+                  <div className="modal-footer">
+                    <button
+                      onClick={() => setModalIsOpen(false)}
+                      className="waves-effect waves-light btn brown lighten-2 btnVoltar"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+                <br />
+                <div className="col divResponsive s12 pad-0">
+                  <table className="striped colored primary">
+                    <thead>
+                      <tr>
+                        <th>Número Inicial</th>
+                        <th>Numero Final</th>
+                        <th>Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>50</td>
+                        <td>
+                          <button className="waves-effect waves-light btn brown lighten-2">
+                            Detalhes
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </Modal>
+            </div>
                         <button className="waves-effect waves-light btn brown lighten-2">
                           Detalhes
                         </button>
