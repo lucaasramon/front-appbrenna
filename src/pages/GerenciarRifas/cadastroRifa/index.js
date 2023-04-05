@@ -26,7 +26,7 @@ function CadastrarRifa() {
   
   function toBack(e) {
     e.preventDefault();
-    window.history.back();
+    window.history.back();  
   }
   // Função que captura os valores do input e salva no banco.
   async function NovoCadastroSubmit(e) {
