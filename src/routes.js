@@ -2,6 +2,7 @@ import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 import ResetSenha from './pages/Login/ResetSenha';
 import Login from './pages/Login';
 import NovoCadastro from './pages/Login/NovoCadastro';
+import EditarEquipe from './pages/Tarefas/editarEquipe';
 import CadastroEquipe from './pages/Tarefas/cadastrarEquipe';
 import Home from './pages/Home';
 import Bilhete from './pages/bilhete';
@@ -33,6 +34,9 @@ function route() {
         </Route>
         <Route exact path="/cadastroEquipe">
           <CadastroEquipe />
+        </Route>
+        <Route exact path="/editarEquipe/:id">
+          <EditarEquipe />
         </Route>
         <Route exact path="/cadastroUsuario">
           <CadastroUsuario />
