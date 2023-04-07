@@ -16,7 +16,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     width: "50%",
   },
-};
+}
 
 Modal.setAppElement("#root");
 
@@ -31,7 +31,7 @@ function ReestruturacaoCognitiva() {
   const [numerosEquipe, setNumerosEquipe] = useState([]);
 
   async function setBilhete() {
-    const equipe = await api.post("/updateBilhete", {
+    await api.post("/updateBilhete", {
       idEquipe,
       rifaId,
       nomeEquipe,
@@ -44,6 +44,10 @@ function ReestruturacaoCognitiva() {
     setNumerosEquipe(NumerosBilhetes.data[0].numerosDeBilhetes)
     setNumeroInicial("")
     setNumeroFinal("")
+  }
+
+  async function EditarEquipe() {
+    
   }
 
   async function numeroBilhetes(idEq) {
@@ -105,19 +109,15 @@ function ReestruturacaoCognitiva() {
                   <tr>
                     <th>Equipe</th>
                     <th>Responsavel</th>
-                    <th>Número inicial</th>
-                    <th>Número final</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   {allEquipes.map((data) => (
                     <tr>
-                      <td>{data.equipe}</td>
-                      <td>{data.responsavel}</td>
-                      <td>{data.numerosDeBilhetes[0].numeroInicial}</td>
-                      <td>{data.numerosDeBilhetes[0].numeroFinal}</td>
-                      <td>
+                      <td className="collum1">{data.equipe}</td>
+                      <td className="collum2">{data.responsavel}</td>
+                      <td className="buttonAcao">
                         <div>
                           <button
                             type="button"
@@ -208,9 +208,11 @@ function ReestruturacaoCognitiva() {
                             </div>
                           </Modal>
                         </div>
-                        <button className="waves-effect waves-light btn brown lighten-2">
-                          Detalhes
+                        <div>
+                        <button onClick={EditarEquipe} className="waves-effect waves-light btn brown lighten-2">
+                          Editar Equipe
                         </button>
+                        </div>
                       </td>
                     </tr>
                   ))}

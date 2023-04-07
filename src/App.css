@@ -387,6 +387,18 @@ nav a.sidenav-trigger i, nav .navicon i {
 .input-field-user{
     background-color: rgba(230, 230, 230,0.9) !important;
 }
+.buttonAcao{
+    display: flex;
+    justify-content: space-around;
+    width: 82%;
+}
+.collum1 {
+    width: 20%;
+}
+.collum2 {
+    width: 39%;
+}
+
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600);
 @import url("/src/css/variables.css");
