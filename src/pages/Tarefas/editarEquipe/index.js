@@ -46,7 +46,6 @@ function EditarEquipe() {
         window.location.href = "/Equipes";
     }).catch(error => {
         alert('Erro inesperado');
-        console.error(error);
       });;
   }
 
@@ -69,6 +68,7 @@ function EditarEquipe() {
         "/buscaNumeroBilheteEquipe/" + lastPart
       );
       setComponentesEquipe(valueEquipe.data[0].componentesEquipe);
+      setResponsavel(valueEquipe.data[0].responsavel);
       setAllRifasEdit(valueEquipe.data[0]);
     }
 

@@ -15,6 +15,7 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     width: "50%",
+    height:"80%",
   },
 }
 
@@ -37,10 +38,14 @@ function ReestruturacaoCognitiva() {
       nomeEquipe,
       numeroInicial,
       numeroFinal,
+    }).then(response => {
+      alert(response.data.message);
+    })
+    .catch(error => {
+      alert(error.response.data.message);
     });
-    alert("Números de bilhetes salvo com sucesso!")
+    // alert("Números de bilhetes salvo com sucesso!")
     const NumerosBilhetes = await api.get("/buscaNumeroBilheteEquipe/" + idEquipe)
-    console.log(NumerosBilhetes)
     setNumerosEquipe(NumerosBilhetes.data[0].numerosDeBilhetes)
     setNumeroInicial("")
     setNumeroFinal("")
