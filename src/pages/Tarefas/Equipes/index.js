@@ -47,7 +47,7 @@ function ReestruturacaoCognitiva() {
   }
 
   async function EditarEquipe() {
-    
+
   }
 
   async function numeroBilhetes(idEq) {
@@ -209,9 +209,11 @@ function ReestruturacaoCognitiva() {
                           </Modal>
                         </div>
                         <div>
+                        <Link to={`/editarEquipe/${data._id}`} >
                         <button onClick={EditarEquipe} className="waves-effect waves-light btn brown lighten-2">
                           Editar Equipe
                         </button>
+                        </Link>
                         </div>
                       </td>
                     </tr>

@@ -7,18 +7,12 @@ const fontSelct = {
   color: "#9e9e9e",
 };
 
-
-function CadastroEquipe() {
-  const [equipe, setEquipe] = useState("");
-  const [rifa_id, setRifa] = useState("");
-  const [valorBilhete, setValorBilhete] = useState(null);
+function EditarEquipe() {
   const [componentesEquipe, setComponentesEquipe] = useState([]);
-  const [numerosDeBilhetes, setNumerosDeBilhetes] = useState([]);
   const [responsavel, setResponsavel] = useState("");
   const [allUsuario, setAllUsuario] = useState([]);
   const [allRifas, setAllRifas] = useState([]);
-
-
+  const [allRifasEdit, setAllRifasEdit] = useState([]);
 
   function setMembro(e) {
     const selectedValue = e.target.value;
@@ -41,33 +35,19 @@ function CadastroEquipe() {
 
   async function EquipeSubmit(e) {
     e.preventDefault();
-    if (
-      equipe === "" ||
-      rifa_id === "" ||
-      valorBilhete === "" ||
-      componentesEquipe.length === 0 ||
-      responsavel === ""
-    ) {
-      alert("Tem um campo vazio");
-    } else {
-      await api
-        .post("/equipes", {
-          equipe,
-          rifa_id,
-          valorBilhete,
-          componentesEquipe,
-          responsavel,
-          numerosDeBilhetes,
-        })
-        .then((response) => {
-          alert("Cadastro realizado com sucesso!");
-          window.location.href = "/Equipes";
-        })
-        .catch((error) => {
-          alert(error.response.data.message);
-        });
-
-    }
+    let url = window.location.pathname;
+    let parts = url.split("/");
+    let lastPart = parts.pop() || parts.pop();
+    await api.post("/equipesUpDate/" + lastPart, {
+      componentesEquipe,
+      responsavel,
+    }).then(response => {
+        alert('Alterações salvas');
+        window.location.href = "/Equipes";
+    }).catch(error => {
+        alert('Erro inesperado');
+        console.error(error);
+      });;
   }
 
   //Função que pega todos os usuarios do banco
@@ -81,8 +61,20 @@ function CadastroEquipe() {
       setAllRifas(rifas.data);
     }
 
+    async function retornaRifasEdit() {
+      let url = window.location.pathname;
+      let parts = url.split("/");
+      let lastPart = parts.pop() || parts.pop();
+      const valueEquipe = await api.get(
+        "/buscaNumeroBilheteEquipe/" + lastPart
+      );
+      setComponentesEquipe(valueEquipe.data[0].componentesEquipe);
+      setAllRifasEdit(valueEquipe.data[0]);
+    }
+
     retornaUsuarios();
     retornaRifas();
+    retornaRifasEdit();
   }, []);
   return (
     <>
@@ -93,68 +85,52 @@ function CadastroEquipe() {
               <h5 className="bot-20 sec-tit">Cadastrar Equipe</h5>
             </div>
           </div>
-          <form onSubmit={EquipeSubmit}>
+          <form>
             <div className="col s12 m6">
               <label className="active">Rifa</label>
               <select
-                onChange={(e) => {
-                  setRifa(e.target.value);
-                  allRifas.forEach((element) => {
-                    if (element.rifa_id == e.target.value) {
-                      setValorBilhete(element.valorBilhete);
-                    }
-                  });
-                }}
                 id="rifa"
                 type="text"
                 className="input-field browser-default"
               >
-                <option disabled selected>
-                  Escolha a rifa
-                </option>
                 {allRifas.map((data) => (
                   <option value={data.rifa_id}>{data.titulo}</option>
                 ))}
               </select>
             </div>
             <div className="input-field col s10 offset-s1">
-              <input
-                disabled
-                value={valorBilhete}
-                onChange={(e) => setValorBilhete(e.target.value)}
-                id="valorBilhete"
-                type="text"
-                className=""
-              />
+              <input disabled value={allRifasEdit.valorBilhete} type="text" />
               <label className="active">Valor do bilhete</label>
             </div>
             <div className="input-field col s10 offset-s1">
               <input
-                value={equipe}
-                onChange={(e) => setEquipe(e.target.value)}
+                disabled
+                value={allRifasEdit.equipe}
                 id="equipe"
                 type="text"
-                className=""
               />
               <label className="active">Nome da Equipe</label>
             </div>
             <div className="col s12 m6">
               <select
-                value={responsavel}
                 onChange={setUsuarioResponsavel}
                 id=""
                 type="text"
                 style={fontSelct}
                 className="input-field browser-default"
               >
-                <option value="">Responsavel</option>
                 {allUsuario.map((data) => (
-                  <option value={data.nome}>{data.nome}</option>
+                  <option
+                    key={data.id}
+                    value={data.nome}
+                    selected={data.nome === allRifasEdit.responsavel}
+                  >
+                    {data.nome}
+                  </option>
                 ))}
               </select>
             </div>
 
-         
             <hr />
             <label>Componentes da equipe</label>
             <div className="col s12 m6">
@@ -194,7 +170,8 @@ function CadastroEquipe() {
             <div className="grupoBotao">
               <div className="modal-footer">
                 <button
-                  type="submit"
+                  onClick={EquipeSubmit}
+                  type="button"
                   className="waves-effect waves-light btn bg-primary"
                 >
                   Salvar
@@ -216,14 +193,4 @@ function CadastroEquipe() {
   );
 }
 
-// Styles
-const styles = {
-  button: {
-    cursor: "pointer",
-  },
-  buttonDisabled: {
-    cursor: "not-allowed",
-  },
-};
-
-export default CadastroEquipe;
+export default EditarEquipe;
